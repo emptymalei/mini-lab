@@ -1,1 +1,1 @@
-pip install -r requirements.txt -r notebooks/data_imputation/requirements.txt
+pip install -r requirements.txt -r notebooks/data_imputation/requirements.txt -r notebooks/data_management/requirements.txt
