@@ -11,6 +11,12 @@ on:
     #
     # paths:
     # - some-subfolder/**
+  workflow_dispatch:
+    inputs:
+      whotriggered:
+        description: 'Manual Trigger'
+        default: 'Why'
+        required: false
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
