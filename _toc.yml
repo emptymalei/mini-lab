@@ -18,4 +18,5 @@ parts:
     numbered: True
     chapters:
     - file: notebooks/basics/pytorch_tricks
+    - file: notebooks/decision_tree/decision_tree_example
 
