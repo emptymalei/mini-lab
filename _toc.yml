@@ -15,6 +15,16 @@ parts:
     chapters:
     - file: notebooks/data_imputation/holidays
     - file: notebooks/data_management/datapackage_demo
+    - file: notebooks/scientist_names/scientist_names
+    - file: notebooks/space_exploration/space-exploration
+  - caption: Statistics
+    numbered: True
+    chapters:
+    - file: notebooks/statistics/box-cox-transformation
+    - file: notebooks/statistics/centering-matrix
+    - file: notebooks/statistics/confidence-interval
+    - file: notebooks/statistics/correlations
+    - file: notebooks/visualization/anscombes-quartet
   - caption: Graph
     numbered: True
     chapters:
@@ -27,4 +37,14 @@ parts:
     chapters:
     - file: notebooks/basics/pytorch_tricks
     - file: notebooks/decision_tree/decision_tree_example
-
+    - file: notebooks/random_forest/random_forest_benchmark
+    - file: notebooks/logistic_regression/logistic_regression_basics
+    - file: notebooks/vc_dimension/growth_function
+  - caption: Time Series
+    numbered: True
+    chapters:
+    - file: notebooks/logistics/air_freight_time_series_data
+  - caption: Interplanetary Immigration Center
+    numbered: True
+    chapters:
+    - file: notebooks/mars_base_locations/base_locations
