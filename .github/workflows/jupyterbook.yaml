@@ -33,6 +33,7 @@ jobs:
     - name: Build the book
       run: |
         jupyter-book build .
+        cp assets/CNAME ./_build/html/CNAME
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
