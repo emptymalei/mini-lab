@@ -143,3 +143,12 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+.vscode/*
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+_build/*
