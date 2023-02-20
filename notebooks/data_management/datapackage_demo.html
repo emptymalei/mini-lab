@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Colors in Cologne &#8212; LM Mini Lab</title>
+    <title>4. Demo for datapackage &#8212; LM Mini Lab</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Work, Men, Women" href="../social/women-at-work.html" />
-    <link rel="prev" title="Mini Lab" href="../../index.html" />
+    <link rel="next" title="5. Some Simple PyTorch Tricks" href="../basics/pytorch_tricks.html" />
+    <link rel="prev" title="3. Dealing with Holidays in Data" href="../data_imputation/holidays.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,9 +118,9 @@ const thebe_selector_output = ".output, .cell_output"
   Stories
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fun/cologne-xkcd.html">
    1. Colors in Cologne
   </a>
  </li>
@@ -135,14 +135,14 @@ const thebe_selector_output = ".output, .cell_output"
   Data
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../data_imputation/holidays.html">
    3. Dealing with Holidays in Data
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../data_management/datapackage_demo.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    4. Demo for datapackage
   </a>
  </li>
@@ -217,7 +217,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/emptymalei/mini-lab/master?urlpath=tree/notebooks/notebooks/fun/cologne-xkcd.ipynb"
+        <a href="https://mybinder.org/v2/gh/emptymalei/mini-lab/master?urlpath=tree/notebooks/notebooks/data_management/datapackage_demo.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -277,7 +277,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/emptymalei/mini-lab/issues/new?title=Issue%20on%20page%20%2Fnotebooks/fun/cologne-xkcd.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/emptymalei/mini-lab/issues/new?title=Issue%20on%20page%20%2Fnotebooks/data_management/datapackage_demo.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -305,7 +305,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/notebooks/fun/cologne-xkcd.ipynb"
+        <a href="../../_sources/notebooks/data_management/datapackage_demo.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -354,7 +354,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Colors in Cologne</h1>
+                <h1>Demo for datapackage</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -366,54 +366,100 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="colors-in-cologne">
-<h1><span class="section-number">1. </span>Colors in Cologne<a class="headerlink" href="#colors-in-cologne" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="demo-for-datapackage">
+<h1><span class="section-number">4. </span>Demo for datapackage<a class="headerlink" href="#demo-for-datapackage" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datapackage</span> <span class="kn">import</span> <span class="n">Package</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
-    <span class="c1"># Based on &quot;The Data So Far&quot; from XKCD by Randall Monroe</span>
-    <span class="c1"># http://xkcd.com/373/</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dpk_uri</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/DataHerb/dataset-data-science-job/main/datapackage.json&quot;</span>
 
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">6.18</span><span class="p">))</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;Black&#39;</span><span class="p">,</span> <span class="s1">&#39;Gray&#39;</span><span class="p">,</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;Other&#39;</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number Density of Clothes&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Clothing Color in Köln&quot;</span><span class="p">)</span>
-
-    <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
-        <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span>
-        <span class="s1">&#39;Data collected on the street&#39;</span><span class="p">,</span>
-        <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-    
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">Package</span><span class="p">(</span><span class="n">dpk_uri</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">get_resource</span><span class="p">(</span><span class="s1">&#39;resource&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family [&#39;xkcd&#39;, &#39;xkcd Script&#39;, &#39;Humor Sans&#39;, &#39;Comic Neue&#39;, &#39;Comic Sans MS&#39;] not found. Falling back to DejaVu Sans.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">package</span><span class="o">.</span><span class="n">get_resource</span><span class="p">(</span><span class="s1">&#39;resource&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;read&#39;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family [&#39;xkcd&#39;, &#39;xkcd Script&#39;, &#39;Humor Sans&#39;, &#39;Comic Neue&#39;, &#39;Comic Sans MS&#39;] not found. Falling back to DejaVu Sans.
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">descriptor</span>
 </pre></div>
 </div>
-<img alt="../../_images/cologne-xkcd_2_2.png" src="../../_images/cologne-xkcd_2_2.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;profile&#39;: &#39;tabular-data-package&#39;,
+ &#39;resources&#39;: [{&#39;path&#39;: &#39;dataset/stackoverflow_job_listing.csv&#39;,
+   &#39;profile&#39;: &#39;tabular-data-resource&#39;,
+   &#39;name&#39;: &#39;stackoverflow_job_listing&#39;,
+   &#39;format&#39;: &#39;csv&#39;,
+   &#39;mediatype&#39;: &#39;text/csv&#39;,
+   &#39;encoding&#39;: &#39;utf-8&#39;,
+   &#39;schema&#39;: {&#39;fields&#39;: [{&#39;name&#39;: &#39;link&#39;,
+      &#39;type&#39;: &#39;string&#39;,
+      &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;category&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;title&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;description&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;published_at&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;location&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;stackoverflow_id&#39;, &#39;type&#39;: &#39;integer&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;author&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;location_country&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;location_city&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+     {&#39;name&#39;: &#39;updated_at&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;}],
+    &#39;missingValues&#39;: [&#39;&#39;]}}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">descriptor</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;path&#39;: &#39;dataset/stackoverflow_job_listing.csv&#39;,
+ &#39;profile&#39;: &#39;tabular-data-resource&#39;,
+ &#39;name&#39;: &#39;stackoverflow_job_listing&#39;,
+ &#39;format&#39;: &#39;csv&#39;,
+ &#39;mediatype&#39;: &#39;text/csv&#39;,
+ &#39;encoding&#39;: &#39;utf-8&#39;,
+ &#39;schema&#39;: {&#39;fields&#39;: [{&#39;name&#39;: &#39;link&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;category&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;title&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;description&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;published_at&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;location&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;stackoverflow_id&#39;, &#39;type&#39;: &#39;integer&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;author&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;location_country&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;location_city&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;},
+   {&#39;name&#39;: &#39;updated_at&#39;, &#39;type&#39;: &#39;string&#39;, &#39;format&#39;: &#39;default&#39;}],
+  &#39;missingValues&#39;: [&#39;&#39;]}}
+</pre></div>
+</div>
 </div>
 </div>
 <a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=c8a1762a-62b2-46cf-95c0-ea77984dacfd' target="_blank">
@@ -433,7 +479,7 @@ Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></s
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/fun"
+            path: "./notebooks/data_management"
         },
         predefinedOutput: true
     }
@@ -447,17 +493,17 @@ Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></s
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../../index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../data_imputation/holidays.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Mini Lab</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Dealing with Holidays in Data</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../social/women-at-work.html" title="next page">
+    <a class='right-next' id="next-link" href="../basics/pytorch_tricks.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Work, Men, Women</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Some Simple PyTorch Tricks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
