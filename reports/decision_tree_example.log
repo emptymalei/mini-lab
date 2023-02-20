@@ -17,25 +17,52 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import json
-
-import pandas as pd
-import numpy as np
-
-import matplotlib.pyplot as plt
-import seaborn as sns;sns.set();
-
-from sklearn import tree
+print(
+    df.sample(10).to_markdown()
+)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 7[0m
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[1;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[0;32m----> 7[0m [38;5;28;01mimport[39;00m [38;5;21;01mseaborn[39;00m [38;5;28;01mas[39;00m [38;5;21;01msns[39;00m;sns[38;5;241m.[39mset();
-[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m [38;5;28;01mimport[39;00m tree
+File [0;32m/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/compat/_optional.py:141[0m, in [0;36mimport_optional_dependency[0;34m(name, extra, errors, min_version)[0m
+[1;32m    140[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 141[0m     module [38;5;241m=[39m [43mimportlib[49m[38;5;241;43m.[39;49m[43mimport_module[49m[43m([49m[43mname[49m[43m)[49m
+[1;32m    142[0m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
 
-[0;31mModuleNotFoundError[0m: No module named 'seaborn'
-ModuleNotFoundError: No module named 'seaborn'
+File [0;32m/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/importlib/__init__.py:127[0m, in [0;36mimport_module[0;34m(name, package)[0m
+[1;32m    126[0m         level [38;5;241m+[39m[38;5;241m=[39m [38;5;241m1[39m
+[0;32m--> 127[0m [38;5;28;01mreturn[39;00m [43m_bootstrap[49m[38;5;241;43m.[39;49m[43m_gcd_import[49m[43m([49m[43mname[49m[43m[[49m[43mlevel[49m[43m:[49m[43m][49m[43m,[49m[43m [49m[43mpackage[49m[43m,[49m[43m [49m[43mlevel[49m[43m)[49m
+
+File [0;32m<frozen importlib._bootstrap>:1014[0m, in [0;36m_gcd_import[0;34m(name, package, level)[0m
+
+File [0;32m<frozen importlib._bootstrap>:991[0m, in [0;36m_find_and_load[0;34m(name, import_)[0m
+
+File [0;32m<frozen importlib._bootstrap>:973[0m, in [0;36m_find_and_load_unlocked[0;34m(name, import_)[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'tabulate'
+
+During handling of the above exception, another exception occurred:
+
+[0;31mImportError[0m                               Traceback (most recent call last)
+Cell [0;32mIn[6], line 2[0m
+[1;32m      1[0m [38;5;28mprint[39m(
+[0;32m----> 2[0m     [43mdf[49m[38;5;241;43m.[39;49m[43msample[49m[43m([49m[38;5;241;43m10[39;49m[43m)[49m[38;5;241;43m.[39;49m[43mto_markdown[49m[43m([49m[43m)[49m
+[1;32m      3[0m )
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/core/frame.py:2842[0m, in [0;36mDataFrame.to_markdown[0;34m(self, buf, mode, index, storage_options, **kwargs)[0m
+[1;32m   2840[0m kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mtablefmt[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpipe[39m[38;5;124m"[39m)
+[1;32m   2841[0m kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mshowindex[39m[38;5;124m"[39m, index)
+[0;32m-> 2842[0m tabulate [38;5;241m=[39m [43mimport_optional_dependency[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mtabulate[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m   2843[0m result [38;5;241m=[39m tabulate[38;5;241m.[39mtabulate([38;5;28mself[39m, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   2844[0m [38;5;28;01mif[39;00m buf [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/compat/_optional.py:144[0m, in [0;36mimport_optional_dependency[0;34m(name, extra, errors, min_version)[0m
+[1;32m    142[0m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
+[1;32m    143[0m     [38;5;28;01mif[39;00m errors [38;5;241m==[39m [38;5;124m"[39m[38;5;124mraise[39m[38;5;124m"[39m:
+[0;32m--> 144[0m         [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(msg)
+[1;32m    145[0m     [38;5;28;01melse[39;00m:
+[1;32m    146[0m         [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+
+[0;31mImportError[0m: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
+ImportError: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
 

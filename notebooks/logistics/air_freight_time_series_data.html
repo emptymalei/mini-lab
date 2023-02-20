@@ -1,0 +1,1430 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>27. Air Freight Time Series Data &#8212; LM Mini Lab</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="28. Mars Base Locations" href="../mars_base_locations/base_locations.html" />
+    <link rel="prev" title="26. Growth Function and VC Dimension" href="../vc_dimension/growth_function.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/chemisch.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">LM Mini Lab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Mini Lab
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fun/cologne-xkcd.html">
+   1. Colors in Cologne
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fun/experiments-in-biology.html">
+   2. Experiments in Biology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../social/women-at-work.html">
+   3. Work, Men, Women
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_imputation/holidays.html">
+   4. Dealing with Holidays in Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_management/datapackage_demo.html">
+   5. Demo for datapackage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../scientist_names/scientist_names.html">
+   6. Scientist Names
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../space_exploration/space-exploration.html">
+   7. Space Explorations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/box-cox-transformation.html">
+   8. Box-Cox Transformation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/centering-matrix.html">
+   9. Centering Matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/confidence-interval.html">
+   10. Error Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/correlations.html">
+   12. Correlations in Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/anscombes-quartet.html">
+   13. Anscombes Quartet
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Graph
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/graph-cuts.html">
+   14. Graph Cuts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/graph-laplacian.html">
+   15. Graph Laplacian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/graph-node-statistics.html">
+   16. Node Statistics on Graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/traditional-graph-generation.html">
+   18. Some Interesting Graphs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/pytorch_tricks.html">
+   20. Some Simple PyTorch Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../decision_tree/decision_tree_example.html">
+   21. Generate Fake Data for WFH Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../random_forest/random_forest_benchmark.html">
+   22. Random Forest Playground
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logistic_regression/logistic_regression_basics.html">
+   25. Logistic Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vc_dimension/growth_function.html">
+   26. Growth Function and VC Dimension
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Time Series
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   27. Air Freight Time Series Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Interplanetary Immigration Center
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mars_base_locations/base_locations.html">
+   28. Mars Base Locations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab/issues/new?title=Issue%20on%20page%20%2Fnotebooks/logistics/air_freight_time_series_data.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notebooks/logistics/air_freight_time_series_data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trends-cycles-and-more">
+   27.1. Trends Cycles, and more
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Air Freight Time Series Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trends-cycles-and-more">
+   27.1. Trends Cycles, and more
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="air-freight-time-series-data">
+<h1><span class="section-number">27. </span>Air Freight Time Series Data<a class="headerlink" href="#air-freight-time-series-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we use the dataset here: <a class="reference external" href="https://data.transportation.gov/Aviation/International_Report_Freight/u4sg-r5vg">https://data.transportation.gov/Aviation/International_Report_Freight/u4sg-r5vg</a></p>
+<p>More illustrations: <a class="reference external" href="https://www.kaggle.com/parulpandey/us-international-air-traffic-data">https://www.kaggle.com/parulpandey/us-international-air-traffic-data</a></p>
+<p>The scheduled, charter, total columns are the total weight in tons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_uri</span> <span class="o">=</span> <span class="s2">&quot;https://data.transportation.gov/api/views/u4sg-r5vg/rows.csv?accessType=DOWNLOAD&quot;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_uri</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data_dte</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>usg_apt_id</th>
+      <th>usg_apt</th>
+      <th>usg_wac</th>
+      <th>fg_apt_id</th>
+      <th>fg_apt</th>
+      <th>fg_wac</th>
+      <th>airlineid</th>
+      <th>carrier</th>
+      <th>carriergroup</th>
+      <th>type</th>
+      <th>Scheduled</th>
+      <th>Charter</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>05/01/2008</td>
+      <td>2008</td>
+      <td>5</td>
+      <td>13930</td>
+      <td>ORD</td>
+      <td>41</td>
+      <td>16217</td>
+      <td>YUL</td>
+      <td>941</td>
+      <td>19531</td>
+      <td>AC</td>
+      <td>0</td>
+      <td>Freight</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>06/01/2005</td>
+      <td>2005</td>
+      <td>6</td>
+      <td>13303</td>
+      <td>MIA</td>
+      <td>33</td>
+      <td>14739</td>
+      <td>SDQ</td>
+      <td>224</td>
+      <td>20400</td>
+      <td>PT</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>0</td>
+      <td>21</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>09/01/2006</td>
+      <td>2006</td>
+      <td>9</td>
+      <td>13204</td>
+      <td>MCO</td>
+      <td>33</td>
+      <td>12972</td>
+      <td>LHR</td>
+      <td>493</td>
+      <td>19540</td>
+      <td>BA</td>
+      <td>0</td>
+      <td>Freight</td>
+      <td>15</td>
+      <td>0</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>08/01/2004</td>
+      <td>2004</td>
+      <td>8</td>
+      <td>13487</td>
+      <td>MSP</td>
+      <td>63</td>
+      <td>10292</td>
+      <td>AMS</td>
+      <td>461</td>
+      <td>19386</td>
+      <td>NW</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>479</td>
+      <td>0</td>
+      <td>479</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>03/01/2004</td>
+      <td>2004</td>
+      <td>3</td>
+      <td>12478</td>
+      <td>JFK</td>
+      <td>22</td>
+      <td>16321</td>
+      <td>ZRH</td>
+      <td>486</td>
+      <td>19805</td>
+      <td>AA</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>687</td>
+      <td>0</td>
+      <td>687</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>601072</th>
+      <td>06/01/2022</td>
+      <td>2022</td>
+      <td>6</td>
+      <td>15422</td>
+      <td>UAM</td>
+      <td>5</td>
+      <td>13856</td>
+      <td>OKO</td>
+      <td>736</td>
+      <td>21629</td>
+      <td>KD</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>0</td>
+      <td>107</td>
+      <td>107</td>
+    </tr>
+    <tr>
+      <th>601073</th>
+      <td>06/01/2022</td>
+      <td>2022</td>
+      <td>6</td>
+      <td>15422</td>
+      <td>UAM</td>
+      <td>5</td>
+      <td>15505</td>
+      <td>UTP</td>
+      <td>782</td>
+      <td>19874</td>
+      <td>8C</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>0</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>601074</th>
+      <td>06/01/2022</td>
+      <td>2022</td>
+      <td>6</td>
+      <td>16091</td>
+      <td>YIP</td>
+      <td>43</td>
+      <td>11187</td>
+      <td>CUU</td>
+      <td>148</td>
+      <td>20447</td>
+      <td>U7</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>0</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>601075</th>
+      <td>06/01/2022</td>
+      <td>2022</td>
+      <td>6</td>
+      <td>16091</td>
+      <td>YIP</td>
+      <td>43</td>
+      <td>14879</td>
+      <td>SLP</td>
+      <td>148</td>
+      <td>20447</td>
+      <td>U7</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>0</td>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>601076</th>
+      <td>06/01/2022</td>
+      <td>2022</td>
+      <td>6</td>
+      <td>16091</td>
+      <td>YIP</td>
+      <td>43</td>
+      <td>14886</td>
+      <td>SLW</td>
+      <td>148</td>
+      <td>20447</td>
+      <td>U7</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>601077 rows × 16 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_daily</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;data_dte&quot;</span><span class="p">,</span> <span class="s2">&quot;airlineid&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="s2">&quot;data_dte&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;airlineid&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;unique&quot;</span><span class="p">,</span> <span class="s2">&quot;nunique&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df_daily</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>counts</th>
+      <th>unique</th>
+    </tr>
+    <tr>
+      <th>data_dte</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>01/01/1990</th>
+      <td>1165</td>
+      <td>149</td>
+    </tr>
+    <tr>
+      <th>01/01/1991</th>
+      <td>1152</td>
+      <td>154</td>
+    </tr>
+    <tr>
+      <th>01/01/1992</th>
+      <td>1255</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>01/01/1993</th>
+      <td>1246</td>
+      <td>164</td>
+    </tr>
+    <tr>
+      <th>01/01/1994</th>
+      <td>1300</td>
+      <td>164</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>12/01/2017</th>
+      <td>1691</td>
+      <td>144</td>
+    </tr>
+    <tr>
+      <th>12/01/2018</th>
+      <td>1691</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>12/01/2019</th>
+      <td>1617</td>
+      <td>139</td>
+    </tr>
+    <tr>
+      <th>12/01/2020</th>
+      <td>1264</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>12/01/2021</th>
+      <td>1481</td>
+      <td>130</td>
+    </tr>
+  </tbody>
+</table>
+<p>390 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Build the time series of daily tonnage for all.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data_dte</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>usg_apt_id</th>
+      <th>usg_apt</th>
+      <th>usg_wac</th>
+      <th>fg_apt_id</th>
+      <th>fg_apt</th>
+      <th>fg_wac</th>
+      <th>airlineid</th>
+      <th>carrier</th>
+      <th>carriergroup</th>
+      <th>type</th>
+      <th>Scheduled</th>
+      <th>Charter</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>05/01/2008</td>
+      <td>2008</td>
+      <td>5</td>
+      <td>13930</td>
+      <td>ORD</td>
+      <td>41</td>
+      <td>16217</td>
+      <td>YUL</td>
+      <td>941</td>
+      <td>19531</td>
+      <td>AC</td>
+      <td>0</td>
+      <td>Freight</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>06/01/2005</td>
+      <td>2005</td>
+      <td>6</td>
+      <td>13303</td>
+      <td>MIA</td>
+      <td>33</td>
+      <td>14739</td>
+      <td>SDQ</td>
+      <td>224</td>
+      <td>20400</td>
+      <td>PT</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>0</td>
+      <td>21</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>09/01/2006</td>
+      <td>2006</td>
+      <td>9</td>
+      <td>13204</td>
+      <td>MCO</td>
+      <td>33</td>
+      <td>12972</td>
+      <td>LHR</td>
+      <td>493</td>
+      <td>19540</td>
+      <td>BA</td>
+      <td>0</td>
+      <td>Freight</td>
+      <td>15</td>
+      <td>0</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>08/01/2004</td>
+      <td>2004</td>
+      <td>8</td>
+      <td>13487</td>
+      <td>MSP</td>
+      <td>63</td>
+      <td>10292</td>
+      <td>AMS</td>
+      <td>461</td>
+      <td>19386</td>
+      <td>NW</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>479</td>
+      <td>0</td>
+      <td>479</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>03/01/2004</td>
+      <td>2004</td>
+      <td>3</td>
+      <td>12478</td>
+      <td>JFK</td>
+      <td>22</td>
+      <td>16321</td>
+      <td>ZRH</td>
+      <td>486</td>
+      <td>19805</td>
+      <td>AA</td>
+      <td>1</td>
+      <td>Freight</td>
+      <td>687</td>
+      <td>0</td>
+      <td>687</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_daily_tonnage</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;data_dte&quot;</span><span class="p">,</span> <span class="s2">&quot;usg_apt&quot;</span><span class="p">,</span> <span class="s2">&quot;fg_apt&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;tonnage&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">)]</span>
+<span class="p">})</span>
+<span class="n">df_daily_tonnage</span> <span class="o">=</span> <span class="n">df_daily_tonnage</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_daily_tonnage</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data_dte</th>
+      <th>usg_apt</th>
+      <th>fg_apt</th>
+      <th>tonnage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01/01/1990</td>
+      <td>ADK</td>
+      <td>JCK</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01/01/1990</td>
+      <td>ALB</td>
+      <td>YQX</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01/01/1990</td>
+      <td>ANC</td>
+      <td>AMS</td>
+      <td>555</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01/01/1990</td>
+      <td>ANC</td>
+      <td>ARN</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01/01/1990</td>
+      <td>ANC</td>
+      <td>BRU</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>361226</th>
+      <td>12/01/2021</td>
+      <td>WRI</td>
+      <td>TER</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>361227</th>
+      <td>12/01/2021</td>
+      <td>YIP</td>
+      <td>BJX</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>361228</th>
+      <td>12/01/2021</td>
+      <td>YIP</td>
+      <td>QRO</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>361229</th>
+      <td>12/01/2021</td>
+      <td>YIP</td>
+      <td>SLW</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>361230</th>
+      <td>12/01/2021</td>
+      <td>YIP</td>
+      <td>YKF</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>361231 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_daily_tonnage</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;usg_apt&quot;</span><span class="p">,</span> <span class="s2">&quot;fg_apt&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;data_dte&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;unique_dates&quot;</span><span class="p">,</span> <span class="s2">&quot;nunique&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;count_dates&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;unique_dates&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>unique_dates</th>
+      <th>count_dates</th>
+    </tr>
+    <tr>
+      <th>usg_apt</th>
+      <th>fg_apt</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>JFK</th>
+      <th>FRA</th>
+      <td>390</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">MIA</th>
+      <th>GIG</th>
+      <td>390</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th>CUN</th>
+      <td>390</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">GUM</th>
+      <th>MNL</th>
+      <td>390</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th>NRT</th>
+      <td>390</td>
+      <td>390</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We will look into (‘SFO’, ‘FRA’)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_daily_tonnage_sfo_fra</span> <span class="o">=</span> <span class="n">df_daily_tonnage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_daily_tonnage</span><span class="o">.</span><span class="n">usg_apt</span> <span class="o">==</span> <span class="s2">&quot;SFO&quot;</span>
+    <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
+        <span class="n">df_daily_tonnage</span><span class="o">.</span><span class="n">fg_apt</span> <span class="o">==</span> <span class="s2">&quot;FRA&quot;</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="trends-cycles-and-more">
+<h2><span class="section-number">27.1. </span>Trends Cycles, and more<a class="headerlink" href="#trends-cycles-and-more" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_daily_tonnage_sfo_fra</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data_dte</th>
+      <th>usg_apt</th>
+      <th>fg_apt</th>
+      <th>tonnage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>575</th>
+      <td>01/01/1990</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>735</td>
+    </tr>
+    <tr>
+      <th>1232</th>
+      <td>01/01/1991</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>884</td>
+    </tr>
+    <tr>
+      <th>1912</th>
+      <td>01/01/1992</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>877</td>
+    </tr>
+    <tr>
+      <th>2605</th>
+      <td>01/01/1993</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>1018</td>
+    </tr>
+    <tr>
+      <th>3318</th>
+      <td>01/01/1994</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>1144</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>357304</th>
+      <td>12/01/2017</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>869</td>
+    </tr>
+    <tr>
+      <th>358383</th>
+      <td>12/01/2018</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>1527</td>
+    </tr>
+    <tr>
+      <th>359452</th>
+      <td>12/01/2019</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>1314</td>
+    </tr>
+    <tr>
+      <th>360255</th>
+      <td>12/01/2020</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>908</td>
+    </tr>
+    <tr>
+      <th>361161</th>
+      <td>12/01/2021</td>
+      <td>SFO</td>
+      <td>FRA</td>
+      <td>1700</td>
+    </tr>
+  </tbody>
+</table>
+<p>390 rows × 4 columns</p>
+</div></div></div>
+</div>
+<a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=c8a1762a-62b2-46cf-95c0-ea77984dacfd' target="_blank">
+<img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
+Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/logistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../vc_dimension/growth_function.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">26. </span>Growth Function and VC Dimension</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../mars_base_locations/base_locations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">28. </span>Mars Base Locations</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By LM<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
