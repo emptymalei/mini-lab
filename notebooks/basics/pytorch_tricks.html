@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Generate Fake Data for WFH Data" href="../decision_tree/decision_tree_example.html" />
     <link rel="prev" title="4. Demo for datapackage" href="../data_management/datapackage_demo.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -155,6 +156,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    5. Some Simple PyTorch Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../decision_tree/decision_tree_example.html">
+   6. Generate Fake Data for WFH Data
   </a>
  </li>
 </ul>
@@ -471,8 +477,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.5389, -0.8271],
-        [ 0.7439, -0.2379]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 1.2861, -1.8979],
+        [-0.4032, -0.5992]])
 </pre></div>
 </div>
 </div>
@@ -484,7 +490,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.2050, -1.0649])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.8829, -2.4971])
 </pre></div>
 </div>
 </div>
@@ -496,7 +502,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-1.3660,  0.5061])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.6118, -1.0024])
 </pre></div>
 </div>
 </div>
@@ -508,7 +514,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.2050, -1.0649]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.8829, -2.4971]])
 </pre></div>
 </div>
 </div>
@@ -544,7 +550,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[ 0.4056, -0.4453]], requires_grad=True)
+tensor([[-0.2191, -0.0254]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -557,7 +563,7 @@ tensor([[ 0.4056, -0.4453]], requires_grad=True)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([-0.6661], requires_grad=True)
+tensor([0.2304], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -572,8 +578,8 @@ tensor([-0.6661], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.5389, -0.8271],
-        [ 0.7439, -0.2379]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 1.2861, -1.8979],
+        [-0.4032, -0.5992]])
 </pre></div>
 </div>
 </div>
@@ -603,10 +609,10 @@ tensor([-0.6661], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.5389],
-        [-0.8271],
-        [ 0.7439],
-        [-0.2379]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 1.2861],
+        [-1.8979],
+        [-0.4032],
+        [-0.5992]])
 </pre></div>
 </div>
 </div>
@@ -621,8 +627,8 @@ tensor([-0.6661], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.5389, -0.8271],
-        [ 0.7439, -0.2379]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 1.2861, -1.8979],
+        [-0.4032, -0.5992]])
 </pre></div>
 </div>
 </div>
@@ -634,11 +640,11 @@ tensor([-0.6661], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[-0.5389],
-         [-0.8271]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[ 1.2861],
+         [-1.8979]],
 
-        [[ 0.7439],
-         [-0.2379]]])
+        [[-0.4032],
+         [-0.5992]]])
 </pre></div>
 </div>
 </div>
@@ -720,6 +726,13 @@ Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></s
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title"><span class="section-number">4. </span>Demo for datapackage</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../decision_tree/decision_tree_example.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Generate Fake Data for WFH Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

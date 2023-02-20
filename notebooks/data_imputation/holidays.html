@@ -158,6 +158,11 @@ const thebe_selector_output = ".output, .cell_output"
    5. Some Simple PyTorch Tricks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../decision_tree/decision_tree_example.html">
+   6. Generate Fake Data for WFH Data
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -407,28 +412,28 @@ title="Print to PDF"
 <h1><span class="section-number">3. </span>Dealing with Holidays in Data<a class="headerlink" href="#dealing-with-holidays-in-data" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">workalendar.europe</span> <span class="kn">import</span> <span class="n">Germany</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">workalendar.europe</span> <span class="kn">import</span> <span class="n">Germany</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cal</span> <span class="o">=</span> <span class="n">Germany</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cal</span> <span class="o">=</span> <span class="n">Germany</span><span class="p">()</span>
 <span class="n">cal</span><span class="o">.</span><span class="n">holidays</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(datetime.date(2023, 1, 1), &#39;New year&#39;),
- (datetime.date(2023, 4, 7), &#39;Good Friday&#39;),
- (datetime.date(2023, 4, 10), &#39;Easter Monday&#39;),
- (datetime.date(2023, 5, 1), &#39;Labour Day&#39;),
- (datetime.date(2023, 5, 18), &#39;Ascension Thursday&#39;),
- (datetime.date(2023, 5, 29), &#39;Whit Monday&#39;),
- (datetime.date(2023, 10, 3), &#39;Day of German Unity&#39;),
- (datetime.date(2023, 12, 25), &#39;Christmas Day&#39;),
- (datetime.date(2023, 12, 26), &#39;Second Christmas Day&#39;)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(datetime.date(2021, 1, 1), &#39;New year&#39;),
+ (datetime.date(2021, 4, 2), &#39;Good Friday&#39;),
+ (datetime.date(2021, 4, 5), &#39;Easter Monday&#39;),
+ (datetime.date(2021, 5, 1), &#39;Labour Day&#39;),
+ (datetime.date(2021, 5, 13), &#39;Ascension Thursday&#39;),
+ (datetime.date(2021, 5, 24), &#39;Whit Monday&#39;),
+ (datetime.date(2021, 10, 3), &#39;Day of German Unity&#39;),
+ (datetime.date(2021, 12, 25), &#39;Christmas Day&#39;),
+ (datetime.date(2021, 12, 26), &#39;Second Christmas Day&#39;)]
 </pre></div>
 </div>
 </div>
@@ -437,7 +442,7 @@ title="Print to PDF"
 <h2><span class="section-number">3.1. </span>holidays package<a class="headerlink" href="#holidays-package" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 
 <span class="kn">import</span> <span class="nn">holidays</span>
 </pre></div>
@@ -446,7 +451,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">us_holidays</span> <span class="o">=</span> <span class="n">holidays</span><span class="o">.</span><span class="n">UnitedStates</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">us_holidays</span> <span class="o">=</span> <span class="n">holidays</span><span class="o">.</span><span class="n">UnitedStates</span><span class="p">()</span>
 <span class="n">de_holidays</span> <span class="o">=</span> <span class="n">holidays</span><span class="o">.</span><span class="n">Germany</span><span class="p">()</span>
 <span class="c1"># or:</span>
 <span class="c1"># us_holidays = holidays.US()</span>
@@ -460,7 +466,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -472,7 +478,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">holidays</span><span class="o">.</span><span class="n">DE</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">holidays</span><span class="o">.</span><span class="n">DE</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -493,14 +499,14 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">de_holidays</span><span class="o">.</span><span class="n">get_list</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">de_holidays</span><span class="o">.</span><span class="n">get_list</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="n">c177fb1b6a1b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">de_holidays</span><span class="o">.</span><span class="n">get_list</span><span class="p">()</span>
 
 <span class="ne">TypeError</span>: get_list() missing 1 required positional argument: &#39;key&#39;
@@ -510,7 +516,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The Holiday class will also recognize strings of any format</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># The Holiday class will also recognize strings of any format</span>
 <span class="c1"># and int/float representing a Unix timestamp</span>
 <span class="s1">&#39;2014-01-01&#39;</span> <span class="ow">in</span> <span class="n">us_holidays</span>  <span class="c1"># True</span>
 <span class="s1">&#39;1/1/2014&#39;</span> <span class="ow">in</span> <span class="n">us_holidays</span>    <span class="c1"># True</span>

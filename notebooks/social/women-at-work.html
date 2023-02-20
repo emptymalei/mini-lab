@@ -158,6 +158,11 @@ const thebe_selector_output = ".output, .cell_output"
    5. Some Simple PyTorch Tricks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../decision_tree/decision_tree_example.html">
+   6. Generate Fake Data for WFH Data
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -376,37 +381,10 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MaxNLocator</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MaxNLocator</span>
 </pre></div>
 </div>
 </div>
@@ -414,22 +392,26 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
-ls data
+ls datasets/work
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GENDER_EMP_12112018223032946.csv
-men_working_time_AVE_HRS_12112018221342527.csv
-women_working_time_AVE_HRS_12112018221357215.csv
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>men_working_time_AVE_HRS_12112018221342527.csv
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>women_working_time_AVE_HRS_12112018221357215.csv
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">working_time_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span> <span class="s1">&#39;data/men_working_time_AVE_HRS_12112018221342527.csv&#39;</span> <span class="p">)</span>
-<span class="n">gender_working_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/GENDER_EMP_12112018223032946.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">working_time_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span> <span class="s1">&#39;datasets/work/men_working_time_AVE_HRS_12112018221342527.csv&#39;</span> <span class="p">)</span>
+<span class="n">gender_working_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/work/GENDER_EMP_12112018223032946.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -465,10 +447,22 @@ women_working_time_AVE_HRS_12112018221357215.csv
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2038/2608765999.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  women_reported = women_gender_working_df.groupby(&#39;Indicator&#39;).mean()/60
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">men_reported</span> <span class="o">=</span> <span class="n">men_gender_working_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Indicator&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2038/2445414382.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  men_reported = men_gender_working_df.groupby(&#39;Indicator&#39;).mean()/60
 </pre></div>
 </div>
 </div>
@@ -605,7 +599,13 @@ women_working_time_AVE_HRS_12112018221357215.csv
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/women-at-work_15_0.png" src="../../_images/women-at-work_15_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family [&#39;xkcd&#39;, &#39;xkcd Script&#39;, &#39;Humor Sans&#39;, &#39;Comic Neue&#39;, &#39;Comic Sans MS&#39;] not found. Falling back to DejaVu Sans.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family [&#39;xkcd&#39;, &#39;xkcd Script&#39;, &#39;Humor Sans&#39;, &#39;Comic Neue&#39;, &#39;Comic Sans MS&#39;] not found. Falling back to DejaVu Sans.
+</pre></div>
+</div>
+<img alt="../../_images/women-at-work_12_2.png" src="../../_images/women-at-work_12_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -643,7 +643,7 @@ women_working_time_AVE_HRS_12112018221357215.csv
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/women-at-work_16_0.png" src="../../_images/women-at-work_16_0.png" />
+<img alt="../../_images/women-at-work_13_0.png" src="../../_images/women-at-work_13_0.png" />
 </div>
 </div>
 </section>
