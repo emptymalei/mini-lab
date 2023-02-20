@@ -1,42 +1,42 @@
-# This is a basic workflow that is manually triggered
-name: Remote Jupyter Book
+name: deploy-book
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
+# Only run this when the master branch changes
 on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      directory:
-        description: 'Jupyter Book to Release (defaults to whole repository)'
-        default: '.'
-        required: true
-      releasename:
-        description: 'Release name'
-        required: true
-      bookname:
-        description: 'Book name'
-        required: true
-      versionnumber:
-        description: 'Version number'
-        required: true
-      languageid:
-        description: 'Language id'
-        default: 'EN'
-        required: true
+  push:
+    branches:
+    - master
+    # If your git repository has the Jupyter Book within some-subfolder next to
+    # unrelated files, you can make this run only if a file within that specific
+    # folder has been modified.
+    #
+    # paths:
+    # - some-subfolder/**
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
-  RemoteBook:
+  deploy-book:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Publish book
-        uses: dzsquared/jupyter-publish-action@v0.1.0
-        with:
-          directory: ${{ github.event.inputs.directory }}
-          releasename:  ${{ github.event.inputs.releasename }}
-          bookname: ${{ github.event.inputs.bookname }}
-          versionnumber: ${{ github.event.inputs.versionnumber }}
-          languageid: ${{ github.event.inputs.languageid }}
-          githubtoken: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
+
+    # Install dependencies
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    # Build the book
+    - name: Build the book
+      run: |
+        jupyter-book build .
+
+    # Push the book's HTML to github-pages
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_build/html
