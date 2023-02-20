@@ -2,3 +2,4 @@ jupyter-book==0.13.2
 matplotlib==3.4.2
 torch==1.13.1
 pandas==1.5.3
+tqdm==4.64.1

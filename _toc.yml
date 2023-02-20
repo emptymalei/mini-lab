@@ -8,12 +8,20 @@ parts:
     numbered: True  # Only applies to chapters in Part 1.
     chapters:
     - file: notebooks/fun/cologne-xkcd
+    - file: notebooks/fun/experiments-in-biology
     - file: notebooks/social/women-at-work
   - caption: Data
     numbered: True
     chapters:
     - file: notebooks/data_imputation/holidays
     - file: notebooks/data_management/datapackage_demo
+  - caption: Graph
+    numbered: True
+    chapters:
+    - file: notebooks/graph/graph-cuts
+    - file: notebooks/graph/graph-laplacian
+    - file: notebooks/graph/graph-node-statistics
+    - file: notebooks/graph/traditional-graph-generation
   - caption: Machine Learning
     numbered: True
     chapters:
