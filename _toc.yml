@@ -3,5 +3,18 @@
 
 format: jb-book
 root: index
-chapters:
-- file: notebooks/cologne-xkcd
+parts:
+  - caption: Stories
+    numbered: True  # Only applies to chapters in Part 1.
+    chapters:
+    - file: notebooks/fun/cologne-xkcd
+    - file: notebooks/social/women-at-work
+  - caption: Data
+    numbered: True
+    chapters:
+    - file: notebooks/data_imputation/holidays
+  - caption: Machine Learning
+    numbered: True
+    chapters:
+    - file: notebooks/basics/pytorch_tricks
+

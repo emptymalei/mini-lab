@@ -1,0 +1,2 @@
+holidays==0.11.1
+workalendar==15.3.0
