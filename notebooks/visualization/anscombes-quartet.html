@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>13. Anscombes Quartet &#8212; LM Mini Lab</title>
+    <title>14. Anscombes Quartet &#8212; LM Mini Lab</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="14. Graph Cuts" href="../graph/graph-cuts.html" />
-    <link rel="prev" title="12. Correlations in Statistics" href="../statistics/correlations.html" />
+    <link rel="next" title="15. ANOVA" href="../statistics/anova.html" />
+    <link rel="prev" title="13. Correlations in Statistics" href="../statistics/correlations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -161,6 +161,11 @@ const thebe_selector_output = ".output, .cell_output"
    7. Space Explorations
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="airplane/visualizing-airtraffic.html">
+   8. Flight Routes in USA
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -170,27 +175,42 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/box-cox-transformation.html">
-   8. Box-Cox Transformation
+   9. Box-Cox Transformation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/centering-matrix.html">
-   9. Centering Matrix
+   10. Centering Matrix
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/confidence-interval.html">
-   10. Error Function
+   11. Error Function
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/correlations.html">
-   12. Correlations in Statistics
+   13. Correlations in Statistics
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   13. Anscombes Quartet
+   14. Anscombes Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/anova.html">
+   15. ANOVA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/kl-divergence.html">
+   16. KL Divergence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/ttest.html">
+   18. TTest
   </a>
  </li>
 </ul>
@@ -202,22 +222,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-cuts.html">
-   14. Graph Cuts
+   20. Graph Cuts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-laplacian.html">
-   15. Graph Laplacian
+   21. Graph Laplacian
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-node-statistics.html">
-   16. Node Statistics on Graph
+   22. Node Statistics on Graph
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/traditional-graph-generation.html">
-   18. Some Interesting Graphs
+   24. Some Interesting Graphs
   </a>
  </li>
 </ul>
@@ -229,27 +249,27 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/pytorch_tricks.html">
-   20. Some Simple PyTorch Tricks
+   26. Some Simple PyTorch Tricks
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../decision_tree/decision_tree_example.html">
-   21. Generate Fake Data for WFH Data
+   27. Generate Fake Data for WFH Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../random_forest/random_forest_benchmark.html">
-   22. Random Forest Playground
+   28. Random Forest Playground
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../logistic_regression/logistic_regression_basics.html">
-   25. Logistic Regression
+   31. Logistic Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../vc_dimension/growth_function.html">
-   26. Growth Function and VC Dimension
+   32. Growth Function and VC Dimension
   </a>
  </li>
 </ul>
@@ -261,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../logistics/air_freight_time_series_data.html">
-   27. Air Freight Time Series Data
+   33. Air Freight Time Series Data
   </a>
  </li>
 </ul>
@@ -273,7 +293,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../mars_base_locations/base_locations.html">
-   28. Mars Base Locations
+   34. Mars Base Locations
   </a>
  </li>
 </ul>
@@ -485,7 +505,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="anscombes-quartet">
-<h1><span class="section-number">13. </span>Anscombes Quartet<a class="headerlink" href="#anscombes-quartet" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">14. </span>Anscombes Quartet<a class="headerlink" href="#anscombes-quartet" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">download_plotlyjs</span><span class="p">,</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">iplot</span>
@@ -625,13 +645,13 @@ Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></s
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">12. </span>Correlations in Statistics</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>Correlations in Statistics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../graph/graph-cuts.html" title="next page">
+    <a class='right-next' id="next-link" href="../statistics/anova.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Graph Cuts</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>ANOVA</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

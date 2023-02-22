@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>12. Correlations in Statistics &#8212; LM Mini Lab</title>
+    <title>13. Correlations in Statistics &#8212; LM Mini Lab</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="13. Anscombes Quartet" href="../visualization/anscombes-quartet.html" />
-    <link rel="prev" title="10. Error Function" href="confidence-interval.html" />
+    <link rel="next" title="14. Anscombes Quartet" href="../visualization/anscombes-quartet.html" />
+    <link rel="prev" title="11. Error Function" href="confidence-interval.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -161,6 +161,11 @@ const thebe_selector_output = ".output, .cell_output"
    7. Space Explorations
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/airplane/visualizing-airtraffic.html">
+   8. Flight Routes in USA
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -170,27 +175,42 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="box-cox-transformation.html">
-   8. Box-Cox Transformation
+   9. Box-Cox Transformation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="centering-matrix.html">
-   9. Centering Matrix
+   10. Centering Matrix
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="confidence-interval.html">
-   10. Error Function
+   11. Error Function
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   12. Correlations in Statistics
+   13. Correlations in Statistics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/anscombes-quartet.html">
-   13. Anscombes Quartet
+   14. Anscombes Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anova.html">
+   15. ANOVA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kl-divergence.html">
+   16. KL Divergence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ttest.html">
+   18. TTest
   </a>
  </li>
 </ul>
@@ -202,22 +222,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-cuts.html">
-   14. Graph Cuts
+   20. Graph Cuts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-laplacian.html">
-   15. Graph Laplacian
+   21. Graph Laplacian
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-node-statistics.html">
-   16. Node Statistics on Graph
+   22. Node Statistics on Graph
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/traditional-graph-generation.html">
-   18. Some Interesting Graphs
+   24. Some Interesting Graphs
   </a>
  </li>
 </ul>
@@ -229,27 +249,27 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/pytorch_tricks.html">
-   20. Some Simple PyTorch Tricks
+   26. Some Simple PyTorch Tricks
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../decision_tree/decision_tree_example.html">
-   21. Generate Fake Data for WFH Data
+   27. Generate Fake Data for WFH Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../random_forest/random_forest_benchmark.html">
-   22. Random Forest Playground
+   28. Random Forest Playground
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../logistic_regression/logistic_regression_basics.html">
-   25. Logistic Regression
+   31. Logistic Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../vc_dimension/growth_function.html">
-   26. Growth Function and VC Dimension
+   32. Growth Function and VC Dimension
   </a>
  </li>
 </ul>
@@ -261,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../logistics/air_freight_time_series_data.html">
-   27. Air Freight Time Series Data
+   33. Air Freight Time Series Data
   </a>
  </li>
 </ul>
@@ -273,7 +293,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../mars_base_locations/base_locations.html">
-   28. Mars Base Locations
+   34. Mars Base Locations
   </a>
  </li>
 </ul>
@@ -493,7 +513,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="correlations-in-statistics">
-<h1><span class="section-number">12. </span>Correlations in Statistics<a class="headerlink" href="#correlations-in-statistics" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">13. </span>Correlations in Statistics<a class="headerlink" href="#correlations-in-statistics" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -590,17 +610,17 @@ convex
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>linear+1
-0.9889108910891092 1.2810620804371002e-48
+0.9849504950495052 3.033952589064384e-48
 linear-1
--0.987722772277228 1.6598088951396665e-48
+-0.9845544554455448 3.306517048264241e-48
 vertical
--0.011881188118811885 0.8602528736686449
+-0.015841584158415845 0.814413358968751
 flat
-0.03524752475247526 0.6014695320427319
+0.13742574257425744 0.04171642761070258
 concave
--0.0003960396039603961 0.9953177137850956
+0.0023762376237623766 0.9719119254015711
 convex
-0.0 1.0
+0.0023762376237623766 0.9719119254015711
 </pre></div>
 </div>
 </div>
@@ -616,17 +636,17 @@ convex
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>linear+1
-0.0 2.2002967840584586e-146
+0.0023762376237623766 3.6168969367390545e-143
 linear-1
-0.0 5.201699892131487e-145
+0.0023762376237623766 8.729555489112954e-147
 vertical
-0.0 0.9026358102972512
+0.0023762376237623766 0.8887571084639883
 flat
-0.0 0.6248823441492017
+0.0023762376237623766 0.042842997000772556
 concave
-0.0 0.9927055244290877
+0.0023762376237623766 0.9742476493088099
 convex
-0.0 0.9849458198762986
+0.0023762376237623766 0.9957789992539074
 </pre></div>
 </div>
 </div>
@@ -661,7 +681,9 @@ nan
 flat
 nan
 concave
-nan
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
 convex
 nan
 </pre></div>
@@ -698,7 +720,7 @@ nan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05924400574529332
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
 </pre></div>
 </div>
 </div>
@@ -710,7 +732,7 @@ nan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f71d9d956a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f2d1a059400&gt;
 </pre></div>
 </div>
 <img alt="../../_images/correlations_19_1.png" src="../../_images/correlations_19_1.png" />
@@ -749,13 +771,13 @@ nan
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10. </span>Error Function</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>Error Function</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../visualization/anscombes-quartet.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Anscombes Quartet</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Anscombes Quartet</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

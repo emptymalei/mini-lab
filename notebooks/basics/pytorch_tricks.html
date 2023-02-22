@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>20. Some Simple PyTorch Tricks &#8212; LM Mini Lab</title>
+    <title>26. Some Simple PyTorch Tricks &#8212; LM Mini Lab</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="21. Generate Fake Data for WFH Data" href="../decision_tree/decision_tree_example.html" />
-    <link rel="prev" title="18. Some Interesting Graphs" href="../graph/traditional-graph-generation.html" />
+    <link rel="next" title="27. Generate Fake Data for WFH Data" href="../decision_tree/decision_tree_example.html" />
+    <link rel="prev" title="24. Some Interesting Graphs" href="../graph/traditional-graph-generation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -161,6 +161,11 @@ const thebe_selector_output = ".output, .cell_output"
    7. Space Explorations
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/airplane/visualizing-airtraffic.html">
+   8. Flight Routes in USA
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -170,27 +175,42 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/box-cox-transformation.html">
-   8. Box-Cox Transformation
+   9. Box-Cox Transformation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/centering-matrix.html">
-   9. Centering Matrix
+   10. Centering Matrix
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/confidence-interval.html">
-   10. Error Function
+   11. Error Function
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statistics/correlations.html">
-   12. Correlations in Statistics
+   13. Correlations in Statistics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/anscombes-quartet.html">
-   13. Anscombes Quartet
+   14. Anscombes Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/anova.html">
+   15. ANOVA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/kl-divergence.html">
+   16. KL Divergence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/ttest.html">
+   18. TTest
   </a>
  </li>
 </ul>
@@ -202,22 +222,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-cuts.html">
-   14. Graph Cuts
+   20. Graph Cuts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-laplacian.html">
-   15. Graph Laplacian
+   21. Graph Laplacian
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/graph-node-statistics.html">
-   16. Node Statistics on Graph
+   22. Node Statistics on Graph
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../graph/traditional-graph-generation.html">
-   18. Some Interesting Graphs
+   24. Some Interesting Graphs
   </a>
  </li>
 </ul>
@@ -229,27 +249,27 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   20. Some Simple PyTorch Tricks
+   26. Some Simple PyTorch Tricks
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../decision_tree/decision_tree_example.html">
-   21. Generate Fake Data for WFH Data
+   27. Generate Fake Data for WFH Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../random_forest/random_forest_benchmark.html">
-   22. Random Forest Playground
+   28. Random Forest Playground
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../logistic_regression/logistic_regression_basics.html">
-   25. Logistic Regression
+   31. Logistic Regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../vc_dimension/growth_function.html">
-   26. Growth Function and VC Dimension
+   32. Growth Function and VC Dimension
   </a>
  </li>
 </ul>
@@ -261,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../logistics/air_freight_time_series_data.html">
-   27. Air Freight Time Series Data
+   33. Air Freight Time Series Data
   </a>
  </li>
 </ul>
@@ -273,7 +293,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../mars_base_locations/base_locations.html">
-   28. Mars Base Locations
+   34. Mars Base Locations
   </a>
  </li>
 </ul>
@@ -484,32 +504,32 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sum">
-   20.1. sum
+   26.1. sum
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parameters">
-   20.2. parameters
+   26.2. parameters
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nonzero">
-   20.3. nonzero
+   26.3. nonzero
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#view">
-   20.4. view
+   26.4. view
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   20.5. …
+   26.5. …
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#repeat">
-   20.6. Repeat
+   26.6. Repeat
   </a>
  </li>
 </ul>
@@ -533,32 +553,32 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sum">
-   20.1. sum
+   26.1. sum
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parameters">
-   20.2. parameters
+   26.2. parameters
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nonzero">
-   20.3. nonzero
+   26.3. nonzero
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#view">
-   20.4. view
+   26.4. view
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   20.5. …
+   26.5. …
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#repeat">
-   20.6. Repeat
+   26.6. Repeat
   </a>
  </li>
 </ul>
@@ -572,7 +592,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="some-simple-pytorch-tricks">
-<h1><span class="section-number">20. </span>Some Simple PyTorch Tricks<a class="headerlink" href="#some-simple-pytorch-tricks" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">26. </span>Some Simple PyTorch Tricks<a class="headerlink" href="#some-simple-pytorch-tricks" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -581,7 +601,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="sum">
-<h2><span class="section-number">20.1. </span>sum<a class="headerlink" href="#sum" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.1. </span>sum<a class="headerlink" href="#sum" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rdn_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -590,8 +610,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.8366,  0.8666],
-        [-0.2879, -0.3228]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.3763,  1.6875],
+        [-0.3241,  0.0621]])
 </pre></div>
 </div>
 </div>
@@ -603,7 +623,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-1.1245,  0.5439])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.0521, 1.7496])
 </pre></div>
 </div>
 </div>
@@ -615,7 +635,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.0300, -0.6106])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 2.0637, -0.2620])
 </pre></div>
 </div>
 </div>
@@ -627,14 +647,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-1.1245,  0.5439]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.0521, 1.7496]])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="parameters">
-<h2><span class="section-number">20.2. </span>parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.2. </span>parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pararmeters_linear</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -663,7 +683,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[0.6174, 0.2252]], requires_grad=True)
+tensor([[ 0.2526, -0.1172]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -676,14 +696,14 @@ tensor([[0.6174, 0.2252]], requires_grad=True)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([-0.5482], requires_grad=True)
+tensor([-0.6250], requires_grad=True)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="nonzero">
-<h2><span class="section-number">20.3. </span>nonzero<a class="headerlink" href="#nonzero" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.3. </span>nonzero<a class="headerlink" href="#nonzero" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rdn_tensor</span>
@@ -691,8 +711,8 @@ tensor([-0.5482], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.8366,  0.8666],
-        [-0.2879, -0.3228]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.3763,  1.6875],
+        [-0.3241,  0.0621]])
 </pre></div>
 </div>
 </div>
@@ -714,7 +734,7 @@ tensor([-0.5482], requires_grad=True)
 </div>
 </section>
 <section id="view">
-<h2><span class="section-number">20.4. </span>view<a class="headerlink" href="#view" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.4. </span>view<a class="headerlink" href="#view" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rdn_tensor</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -722,17 +742,17 @@ tensor([-0.5482], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.8366],
-        [ 0.8666],
-        [-0.2879],
-        [-0.3228]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.3763],
+        [ 1.6875],
+        [-0.3241],
+        [ 0.0621]])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id1">
-<h2><span class="section-number">20.5. </span>…<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.5. </span>…<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rdn_tensor</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
@@ -740,8 +760,8 @@ tensor([-0.5482], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.8366,  0.8666],
-        [-0.2879, -0.3228]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.3763,  1.6875],
+        [-0.3241,  0.0621]])
 </pre></div>
 </div>
 </div>
@@ -753,11 +773,11 @@ tensor([-0.5482], requires_grad=True)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[-0.8366],
-         [ 0.8666]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[ 0.3763],
+         [ 1.6875]],
 
-        [[-0.2879],
-         [-0.3228]]])
+        [[-0.3241],
+         [ 0.0621]]])
 </pre></div>
 </div>
 </div>
@@ -800,7 +820,7 @@ tensor([-0.5482], requires_grad=True)
 </div>
 </section>
 <section id="repeat">
-<h2><span class="section-number">20.6. </span>Repeat<a class="headerlink" href="#repeat" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.6. </span>Repeat<a class="headerlink" href="#repeat" title="Permalink to this headline">#</a></h2>
 <a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=c8a1762a-62b2-46cf-95c0-ea77984dacfd' target="_blank">
 <img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
 Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></section>
@@ -837,13 +857,13 @@ Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></s
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">18. </span>Some Interesting Graphs</p>
+            <p class="prev-next-title"><span class="section-number">24. </span>Some Interesting Graphs</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../decision_tree/decision_tree_example.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>Generate Fake Data for WFH Data</p>
+        <p class="prev-next-title"><span class="section-number">27. </span>Generate Fake Data for WFH Data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
