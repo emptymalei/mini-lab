@@ -1,0 +1,4523 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. Road Freight in EU &#8212; LM Mini Lab</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="16. Modal Split in Transportation" href="eurostats_modal_split.html" />
+    <link rel="prev" title="9. Air Freight Infrastructure" href="airfreight-infra.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/chemisch.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">LM Mini Lab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Mini Lab
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fun/cologne-xkcd.html">
+   1. Colors in Cologne
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fun/experiments-in-biology.html">
+   2. Experiments in Biology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../social/women-at-work.html">
+   3. Work, Men, Women
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data_imputation/holidays.html">
+   4. Dealing with Holidays in Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data_management/datapackage_demo.html">
+   5. Demo for datapackage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientist_names/scientist_names.html">
+   6. Scientist Names
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../space_exploration/space-exploration.html">
+   7. Space Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../visualization/airplane/visualizing-airtraffic.html">
+   8. Flight Routes in USA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="airfreight-infra.html">
+   9. Air Freight Infrastructure
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10. Road Freight in EU
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eurostats_modal_split.html">
+   16. Modal Split in Transportation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ocean-freight-infra.html">
+   20. Ocean Freight Infra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="road_freight_history.html">
+   21. Road/Rail Freight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="road-speed-limits-by-countries.html">
+   25. Road Speed Limits by Countries
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/box-cox-transformation.html">
+   26. Box-Cox Transformation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/centering-matrix.html">
+   27. Centering Matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/confidence-interval.html">
+   28. Error Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/correlations.html">
+   30. Correlations in Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../visualization/anscombes-quartet.html">
+   31. Anscombes Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/anova.html">
+   32. ANOVA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/kl-divergence.html">
+   33. KL Divergence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/ttest.html">
+   35. TTest
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Graph
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-cuts.html">
+   37. Graph Cuts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-laplacian.html">
+   38. Graph Laplacian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-node-statistics.html">
+   39. Node Statistics on Graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/traditional-graph-generation.html">
+   41. Some Interesting Graphs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/pytorch_tricks.html">
+   43. Some Simple PyTorch Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../decision_tree/decision_tree_example.html">
+   44. Generate Fake Data for WFH Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../random_forest/random_forest_benchmark.html">
+   45. Random Forest Playground
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistic_regression/logistic_regression_basics.html">
+   48. Logistic Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../vc_dimension/growth_function.html">
+   49. Growth Function and VC Dimension
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Time Series
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistics/air_freight_time_series_data.html">
+   50. Air Freight Time Series Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Economics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../supply-demand.html">
+   51. Supply and Demand
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Interplanetary Immigration Center
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mars_base_locations/base_locations.html">
+   52. Mars Base Locations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/emptymalei/mini-lab/master?urlpath=tree/notebooks/notebooks/economics/road_freight/european-road-freight.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab/issues/new?title=Issue%20on%20page%20%2Fnotebooks/economics/road_freight/european-road-freight.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/notebooks/economics/road_freight/european-road-freight.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   10. Road Freight in EU
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-packages">
+     10.1. Install Packages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-data">
+     10.2. Load Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clean-up">
+     10.3. Clean Up
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construct-the-matrix">
+   11. Construct the Matrix
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-minimal-network">
+     11.1. Build a Minimal Network
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-model">
+   12. Naive Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-stage-model">
+   13. Four Stage Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-symmetric-linear-model">
+   14. Build a Symmetric Linear Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduce-symmetry-breaking">
+   15. Introduce Symmetry Breaking
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Road Freight in EU</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   10. Road Freight in EU
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-packages">
+     10.1. Install Packages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-data">
+     10.2. Load Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clean-up">
+     10.3. Clean Up
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construct-the-matrix">
+   11. Construct the Matrix
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-minimal-network">
+     11.1. Build a Minimal Network
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-model">
+   12. Naive Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-stage-model">
+   13. Four Stage Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-symmetric-linear-model">
+   14. Build a Symmetric Linear Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduce-symmetry-breaking">
+   15. Introduce Symmetry Breaking
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="road-freight-in-eu">
+<h1><span class="section-number">10. </span>Road Freight in EU<a class="headerlink" href="#road-freight-in-eu" title="Permalink to this headline">#</a></h1>
+<p>We will pull data from eurostats and clean up the road freight data in EU.</p>
+<section id="install-packages">
+<h2><span class="section-number">10.1. </span>Install Packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data">
+<h2><span class="section-number">10.2. </span>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h2>
+<p>Goods loaded in reporting country:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/road_go_ia7lgtt.tsv.gz</span></code></p>
+<p>Good unloaded in reporting country:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/road_go_iq_utt.tsv.gz</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source_loaded</span> <span class="o">=</span> <span class="s2">&quot;assets/road-freight-eurostats/road_go_ia_ltt.tsv&quot;</span>
+<span class="n">source_unloaded</span> <span class="o">=</span> <span class="s2">&quot;assets/road-freight-eurostats/road_go_ia_utt.tsv&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">source_loaded</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;[</span><span class="se">\t</span><span class="s1">|,]&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;: &#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">])</span>
+<span class="n">df_unload</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">source_unloaded</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;[</span><span class="se">\t</span><span class="s1">|,]&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;: &#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/leima/anaconda3/envs/theflow-code/lib/python3.7/site-packages/ipykernel_launcher.py:1: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support regex separators (separators &gt; 1 char and different from &#39;\s+&#39; are interpreted as regex); you can avoid this warning by specifying engine=&#39;python&#39;.
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+/Users/leima/anaconda3/envs/theflow-code/lib/python3.7/site-packages/ipykernel_launcher.py:2: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support regex separators (separators &gt; 1 char and different from &#39;\s+&#39; are interpreted as regex); you can avoid this warning by specifying engine=&#39;python&#39;.
+  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>carriage</th>
+      <th>c_unload</th>
+      <th>geo\time</th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>...</th>
+      <th>1991</th>
+      <th>1990</th>
+      <th>1989</th>
+      <th>1988</th>
+      <th>1987</th>
+      <th>1986</th>
+      <th>1985</th>
+      <th>1984</th>
+      <th>1983</th>
+      <th>1982</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>536</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>EU27_2007</td>
+      <td>NO</td>
+      <td>909.0</td>
+      <td>1147.0</td>
+      <td>1478.0</td>
+      <td>1306.0</td>
+      <td>1317.0</td>
+      <td>1251.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>DK</td>
+      <td>CY</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3660</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>NL</td>
+      <td>BE</td>
+      <td>998.0</td>
+      <td>1070.0</td>
+      <td>1048.0</td>
+      <td>950.0</td>
+      <td>1011.0</td>
+      <td>957.0</td>
+      <td>...</td>
+      <td>1005.0</td>
+      <td>817.0</td>
+      <td>885.0</td>
+      <td>823.0</td>
+      <td>798.0</td>
+      <td>809.0</td>
+      <td>744.0</td>
+      <td>658.0</td>
+      <td>556.0</td>
+      <td>583.0</td>
+    </tr>
+    <tr>
+      <th>2112</th>
+      <td>MIO_TKM</td>
+      <td>OWN</td>
+      <td>HR</td>
+      <td>PL</td>
+      <td>16.0</td>
+      <td>38.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>42.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1974</th>
+      <td>MIO_TKM</td>
+      <td>OWN</td>
+      <td>EU28</td>
+      <td>DK</td>
+      <td>82.0</td>
+      <td>57.0</td>
+      <td>59.0</td>
+      <td>58.0</td>
+      <td>42.0</td>
+      <td>78.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3482</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>KZ</td>
+      <td>LV</td>
+      <td>87.0</td>
+      <td>30.0</td>
+      <td>14.0</td>
+      <td>30.0</td>
+      <td>214.0</td>
+      <td>109.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1281</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>RU</td>
+      <td>SI</td>
+      <td>164.0</td>
+      <td>113.0</td>
+      <td>71.0</td>
+      <td>116.0</td>
+      <td>225.0</td>
+      <td>176.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1249</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>RS_ME</td>
+      <td>LU</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3717</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>NO</td>
+      <td>UK</td>
+      <td>5.0</td>
+      <td>46.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>13.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1270</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>RU</td>
+      <td>HR</td>
+      <td>19.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21.0</td>
+      <td>17.0</td>
+      <td>39.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 42 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_unload</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>carriage</th>
+      <th>c_load</th>
+      <th>geo\time</th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>...</th>
+      <th>1991</th>
+      <th>1990</th>
+      <th>1989</th>
+      <th>1988</th>
+      <th>1987</th>
+      <th>1986</th>
+      <th>1985</th>
+      <th>1984</th>
+      <th>1983</th>
+      <th>1982</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2735</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>EE</td>
+      <td>HU</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>4.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3769</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>UK</td>
+      <td>IE</td>
+      <td>407.0</td>
+      <td>387.0</td>
+      <td>406.0</td>
+      <td>397.0</td>
+      <td>381.0</td>
+      <td>369.0</td>
+      <td>...</td>
+      <td>135.0</td>
+      <td>181.0</td>
+      <td>185.0</td>
+      <td>167.0</td>
+      <td>159.0</td>
+      <td>134.0</td>
+      <td>107.0</td>
+      <td>90.0</td>
+      <td>103.0</td>
+      <td>76.0</td>
+    </tr>
+    <tr>
+      <th>2048</th>
+      <td>MIO_TKM</td>
+      <td>OWN</td>
+      <td>LI</td>
+      <td>CZ</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1330</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UA</td>
+      <td>EU15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1314</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>TR</td>
+      <td>LU</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1348</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UK</td>
+      <td>CH</td>
+      <td>NaN</td>
+      <td>31.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2712</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>EA</td>
+      <td>IE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>266.0</td>
+      <td>311.0</td>
+      <td>355.0</td>
+      <td>260.0</td>
+      <td>251.0</td>
+      <td>272.0</td>
+      <td>253.0</td>
+      <td>172.0</td>
+      <td>189.0</td>
+      <td>142.0</td>
+    </tr>
+    <tr>
+      <th>932</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>MA</td>
+      <td>PT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>DK</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2462</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>AT</td>
+      <td>PT</td>
+      <td>144.0</td>
+      <td>164.0</td>
+      <td>39.0</td>
+      <td>33.0</td>
+      <td>19.0</td>
+      <td>91.0</td>
+      <td>...</td>
+      <td>21.0</td>
+      <td>25.0</td>
+      <td>12.0</td>
+      <td>52.0</td>
+      <td>19.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 42 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="clean-up">
+<h2><span class="section-number">10.3. </span>Clean Up<a class="headerlink" href="#clean-up" title="Permalink to this headline">#</a></h2>
+<p>The meaning of keys are illustrated here:
+<a class="reference external" href="https://ec.europa.eu/eurostat/cache/metadata/en/road_go_esms.htm">https://ec.europa.eu/eurostat/cache/metadata/en/road_go_esms.htm</a></p>
+<p>rename columns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;geo</span><span class="se">\\</span><span class="s2">time&quot;</span><span class="p">:</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;c_unload&quot;</span><span class="p">:</span> <span class="s2">&quot;destination&quot;</span>
+    <span class="p">},</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">df_unload</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;geo</span><span class="se">\\</span><span class="s2">time&quot;</span><span class="p">:</span> <span class="s2">&quot;destination&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;c_load&quot;</span><span class="p">:</span> <span class="s2">&quot;origin&quot;</span>
+    <span class="p">},</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_load</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">df_load</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+            <span class="n">col</span><span class="p">:</span> <span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="p">},</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_unload</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">df_unload</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+            <span class="n">col</span><span class="p">:</span> <span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="p">},</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="n">df_load</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1000</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>carriage</th>
+      <th>destination</th>
+      <th>origin</th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>...</th>
+      <th>1991</th>
+      <th>1990</th>
+      <th>1989</th>
+      <th>1988</th>
+      <th>1987</th>
+      <th>1986</th>
+      <th>1985</th>
+      <th>1984</th>
+      <th>1983</th>
+      <th>1982</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AD</td>
+      <td>CZ</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AD</td>
+      <td>DE</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AD</td>
+      <td>ES</td>
+      <td>46.0</td>
+      <td>54.0</td>
+      <td>18.0</td>
+      <td>29.0</td>
+      <td>68.0</td>
+      <td>39.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AD</td>
+      <td>FR</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AD</td>
+      <td>HU</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4123</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>WORLD</td>
+      <td>SE</td>
+      <td>1255.0</td>
+      <td>1453.0</td>
+      <td>1791.0</td>
+      <td>1658.0</td>
+      <td>1828.0</td>
+      <td>1617.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4124</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>WORLD</td>
+      <td>SI</td>
+      <td>5618.0</td>
+      <td>5661.0</td>
+      <td>5152.0</td>
+      <td>4702.0</td>
+      <td>4771.0</td>
+      <td>4308.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4125</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>WORLD</td>
+      <td>SK</td>
+      <td>8472.0</td>
+      <td>8683.0</td>
+      <td>8290.0</td>
+      <td>8357.0</td>
+      <td>7902.0</td>
+      <td>6942.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4126</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>WORLD</td>
+      <td>UK</td>
+      <td>3073.0</td>
+      <td>3315.0</td>
+      <td>3072.0</td>
+      <td>2959.0</td>
+      <td>3487.0</td>
+      <td>3788.0</td>
+      <td>...</td>
+      <td>5604.0</td>
+      <td>5413.0</td>
+      <td>4519.0</td>
+      <td>3900.0</td>
+      <td>3255.0</td>
+      <td>2110.0</td>
+      <td>2003.0</td>
+      <td>2073.0</td>
+      <td>2037.0</td>
+      <td>1767.0</td>
+    </tr>
+    <tr>
+      <th>4127</th>
+      <td>MIO_TKM</td>
+      <td>TOT</td>
+      <td>XK</td>
+      <td>HR</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>2.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>4128 rows × 42 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df_load</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_18_1.png" src="../../../_images/european-road-freight_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df_unload</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_19_1.png" src="../../../_images/european-road-freight_19_1.png" />
+</div>
+</div>
+<p>Here is brief look into the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;unit&#39;, &#39;carriage&#39;, &#39;destination&#39;, &#39;origin&#39;, &#39;2019&#39;, &#39;2018&#39;, &#39;2017&#39;,
+       &#39;2016&#39;, &#39;2015&#39;, &#39;2014&#39;, &#39;2013&#39;, &#39;2012&#39;, &#39;2011&#39;, &#39;2010&#39;, &#39;2009&#39;, &#39;2008&#39;,
+       &#39;2007&#39;, &#39;2006&#39;, &#39;2005&#39;, &#39;2004&#39;, &#39;2003&#39;, &#39;2002&#39;, &#39;2001&#39;, &#39;2000&#39;, &#39;1999&#39;,
+       &#39;1998&#39;, &#39;1997&#39;, &#39;1996&#39;, &#39;1995&#39;, &#39;1994&#39;, &#39;1993&#39;, &#39;1992&#39;, &#39;1991&#39;, &#39;1990&#39;,
+       &#39;1989&#39;, &#39;1988&#39;, &#39;1987&#39;, &#39;1986&#39;, &#39;1985&#39;, &#39;1984&#39;, &#39;1983&#39;, &#39;1982&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;MIO_TKM&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">carriage</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;HIRE&#39;, &#39;NOT_SPEC&#39;, &#39;OWN&#39;, &#39;TOT&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HIRE</span></code>: hire or reward</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OWN</span></code>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;AD&#39;, &#39;AF&#39;, &#39;AFR_N&#39;, &#39;AL&#39;, &#39;AM&#39;, &#39;AT&#39;, &#39;AZ&#39;, &#39;BA&#39;, &#39;BE&#39;, &#39;BG&#39;,
+       &#39;BH&#39;, &#39;BY&#39;, &#39;CH&#39;, &#39;CY&#39;, &#39;CZ&#39;, &#39;CZ_SK&#39;, &#39;DE&#39;, &#39;DK&#39;, &#39;DZ&#39;, &#39;EA&#39;,
+       &#39;EE&#39;, &#39;EEA_X_LI&#39;, &#39;EG&#39;, &#39;EH&#39;, &#39;EL&#39;, &#39;ES&#39;, &#39;EU15&#39;, &#39;EU25&#39;,
+       &#39;EU27_2007&#39;, &#39;EU27_2020&#39;, &#39;EU28&#39;, &#39;EUR_OTH&#39;, &#39;EXT_EU15&#39;, &#39;EX_DD&#39;,
+       &#39;EX_SU&#39;, &#39;EX_YU&#39;, &#39;FI&#39;, &#39;FR&#39;, &#39;GE&#39;, &#39;GI&#39;, &#39;HR&#39;, &#39;HU&#39;, &#39;IE&#39;, &#39;IL&#39;,
+       &#39;IQ&#39;, &#39;IR&#39;, &#39;IS&#39;, &#39;IT&#39;, &#39;JO&#39;, &#39;KG&#39;, &#39;KZ&#39;, &#39;LB&#39;, &#39;LI&#39;, &#39;LT&#39;, &#39;LU&#39;,
+       &#39;LV&#39;, &#39;MA&#39;, &#39;MC&#39;, &#39;MD&#39;, &#39;ME&#39;, &#39;MK&#39;, &#39;MN&#39;, &#39;MT&#39;, &#39;NE&#39;, &#39;NL&#39;, &#39;NO&#39;,
+       &#39;OTH&#39;, &#39;PL&#39;, &#39;PT&#39;, &#39;RO&#39;, &#39;RS&#39;, &#39;RS_ME&#39;, &#39;RU&#39;, &#39;SE&#39;, &#39;SI&#39;, &#39;SK&#39;,
+       &#39;SL&#39;, &#39;SM&#39;, &#39;SY&#39;, &#39;TJ&#39;, &#39;TM&#39;, &#39;TN&#39;, &#39;TR&#39;, &#39;UA&#39;, &#39;UK&#39;, &#39;UNK&#39;, &#39;US&#39;,
+       &#39;UZ&#39;, &#39;VA&#39;, &#39;WORLD&#39;, &#39;XK&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;CZ&#39;, &#39;DE&#39;, &#39;ES&#39;, &#39;FR&#39;, &#39;HU&#39;, &#39;LU&#39;, &#39;NL&#39;, &#39;PT&#39;, &#39;UK&#39;, &#39;LV&#39;, &#39;DK&#39;,
+       &#39;EL&#39;, &#39;EU15&#39;, &#39;IE&#39;, &#39;IT&#39;, &#39;AT&#39;, &#39;BE&#39;, &#39;BG&#39;, &#39;CY&#39;, &#39;FI&#39;, &#39;HR&#39;, &#39;RO&#39;,
+       &#39;SE&#39;, &#39;SI&#39;, &#39;LT&#39;, &#39;PL&#39;, &#39;SK&#39;, &#39;CH&#39;, &#39;EE&#39;, &#39;LI&#39;, &#39;NO&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the purpose of demonstration, we will only use part of the data.</p>
+<ul class="simple">
+<li><p>We will only look at 2019</p></li>
+<li><p>We will only look at HIRE</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lunl_c_origin</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span>
+        <span class="nb">set</span><span class="p">(</span><span class="n">df_load</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> 
+        <span class="nb">set</span><span class="p">(</span><span class="n">df_load</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="p">]</span>
+
+<span class="n">df_load_selected</span> <span class="o">=</span> <span class="n">df_load</span><span class="p">[[</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;carriage&#39;</span><span class="p">,</span> <span class="s1">&#39;destination&#39;</span><span class="p">,</span> <span class="s1">&#39;origin&#39;</span><span class="p">,</span> <span class="s1">&#39;2019&#39;</span><span class="p">,</span> <span class="s1">&#39;2018&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">,</span> <span class="s1">&#39;2014&#39;</span><span class="p">,</span> <span class="s1">&#39;2013&#39;</span><span class="p">,</span> <span class="s1">&#39;2012&#39;</span><span class="p">,</span> <span class="s1">&#39;2011&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">]]</span>
+<span class="n">df_load_selected_com</span> <span class="o">=</span> <span class="n">df_load_selected</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_load_selected</span><span class="o">.</span><span class="n">carriage</span> <span class="o">==</span> <span class="s2">&quot;HIRE&quot;</span>
+    <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
+        <span class="n">df_load_selected</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">lunl_c_origin</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
+        <span class="n">df_load_selected</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">lunl_c_origin</span><span class="p">)</span>
+    <span class="p">)</span> 
+<span class="p">]</span>
+<span class="n">df_load_selected_com</span><span class="c1">#.sample(10)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>carriage</th>
+      <th>destination</th>
+      <th>origin</th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>2013</th>
+      <th>2012</th>
+      <th>2011</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>48</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>BE</td>
+      <td>53.0</td>
+      <td>85.0</td>
+      <td>53.0</td>
+      <td>55.0</td>
+      <td>102.0</td>
+      <td>11.0</td>
+      <td>19.0</td>
+      <td>21.0</td>
+      <td>19.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>BG</td>
+      <td>126.0</td>
+      <td>97.0</td>
+      <td>229.0</td>
+      <td>119.0</td>
+      <td>147.0</td>
+      <td>95.0</td>
+      <td>220.0</td>
+      <td>131.0</td>
+      <td>66.0</td>
+      <td>46.0</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>CH</td>
+      <td>9.0</td>
+      <td>20.0</td>
+      <td>20.0</td>
+      <td>16.0</td>
+      <td>30.0</td>
+      <td>46.0</td>
+      <td>53.0</td>
+      <td>37.0</td>
+      <td>64.0</td>
+      <td>47.0</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>CY</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>CZ</td>
+      <td>454.0</td>
+      <td>478.0</td>
+      <td>678.0</td>
+      <td>577.0</td>
+      <td>700.0</td>
+      <td>779.0</td>
+      <td>722.0</td>
+      <td>651.0</td>
+      <td>572.0</td>
+      <td>589.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1468</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UK</td>
+      <td>PT</td>
+      <td>460.0</td>
+      <td>380.0</td>
+      <td>617.0</td>
+      <td>742.0</td>
+      <td>516.0</td>
+      <td>270.0</td>
+      <td>403.0</td>
+      <td>366.0</td>
+      <td>408.0</td>
+      <td>236.0</td>
+    </tr>
+    <tr>
+      <th>1469</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UK</td>
+      <td>RO</td>
+      <td>211.0</td>
+      <td>371.0</td>
+      <td>314.0</td>
+      <td>390.0</td>
+      <td>420.0</td>
+      <td>370.0</td>
+      <td>281.0</td>
+      <td>280.0</td>
+      <td>364.0</td>
+      <td>514.0</td>
+    </tr>
+    <tr>
+      <th>1470</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UK</td>
+      <td>SE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>12.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1471</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UK</td>
+      <td>SI</td>
+      <td>121.0</td>
+      <td>176.0</td>
+      <td>135.0</td>
+      <td>193.0</td>
+      <td>211.0</td>
+      <td>157.0</td>
+      <td>221.0</td>
+      <td>144.0</td>
+      <td>197.0</td>
+      <td>186.0</td>
+    </tr>
+    <tr>
+      <th>1472</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UK</td>
+      <td>SK</td>
+      <td>353.0</td>
+      <td>421.0</td>
+      <td>293.0</td>
+      <td>441.0</td>
+      <td>278.0</td>
+      <td>233.0</td>
+      <td>421.0</td>
+      <td>234.0</td>
+      <td>476.0</td>
+      <td>208.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>788 rows × 14 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2019&#39;</span><span class="p">,</span> <span class="s1">&#39;2018&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">,</span> <span class="s1">&#39;2014&#39;</span><span class="p">,</span> <span class="s1">&#39;2013&#39;</span><span class="p">,</span> <span class="s1">&#39;2012&#39;</span><span class="p">,</span> <span class="s1">&#39;2011&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_unload_19</span> <span class="o">=</span> <span class="n">df_unload</span><span class="p">[[</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;carriage&#39;</span><span class="p">,</span> <span class="s1">&#39;origin&#39;</span><span class="p">,</span> <span class="s1">&#39;destination&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">years</span><span class="p">]</span>
+<span class="n">df_unload_19_com</span> <span class="o">=</span> <span class="n">df_unload_19</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_unload_19</span><span class="o">.</span><span class="n">carriage</span> <span class="o">==</span> <span class="s2">&quot;HIRE&quot;</span>
+    <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
+        <span class="n">df_unload_19</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">)</span>  
+<span class="p">]</span>
+<span class="n">df_unload_19_com</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>carriage</th>
+      <th>origin</th>
+      <th>destination</th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>2013</th>
+      <th>2012</th>
+      <th>2011</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>83</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>BA</td>
+      <td>UK</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1124</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>RO</td>
+      <td>FR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>788</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>IE</td>
+      <td>SI</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1343</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>UA</td>
+      <td>SK</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>10.0</td>
+      <td>91.0</td>
+      <td>28.0</td>
+      <td>44.0</td>
+      <td>17.0</td>
+      <td>39.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>1286</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>SL</td>
+      <td>EL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>898</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>LU</td>
+      <td>LU</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>796</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>IR</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>707</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>GE</td>
+      <td>PL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>51.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>ES</td>
+      <td>DE</td>
+      <td>378.0</td>
+      <td>344.0</td>
+      <td>464.0</td>
+      <td>303.0</td>
+      <td>538.0</td>
+      <td>535.0</td>
+      <td>586.0</td>
+      <td>814.0</td>
+      <td>950.0</td>
+      <td>1288.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load_selected</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;assets/road-freight-eurostats/eurostats_load_selected.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="construct-the-matrix">
+<h1><span class="section-number">11. </span>Construct the Matrix<a class="headerlink" href="#construct-the-matrix" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_lunl</span> <span class="o">=</span> <span class="n">df_load_selected_com</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;origin&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;destination&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;2019&#39;</span><span class="p">)</span>
+<span class="n">df_lunl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>destination</th>
+      <th>AT</th>
+      <th>BE</th>
+      <th>BG</th>
+      <th>CH</th>
+      <th>CY</th>
+      <th>CZ</th>
+      <th>DE</th>
+      <th>DK</th>
+      <th>EE</th>
+      <th>EL</th>
+      <th>...</th>
+      <th>LV</th>
+      <th>NL</th>
+      <th>NO</th>
+      <th>PL</th>
+      <th>PT</th>
+      <th>RO</th>
+      <th>SE</th>
+      <th>SI</th>
+      <th>SK</th>
+      <th>UK</th>
+    </tr>
+    <tr>
+      <th>origin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AT</th>
+      <td>NaN</td>
+      <td>55.0</td>
+      <td>21.0</td>
+      <td>98.0</td>
+      <td>NaN</td>
+      <td>42.0</td>
+      <td>1404.0</td>
+      <td>18.0</td>
+      <td>NaN</td>
+      <td>31.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>62.0</td>
+      <td>17.0</td>
+      <td>10.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>45.0</td>
+      <td>27.0</td>
+      <td>33.0</td>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>BE</th>
+      <td>53.0</td>
+      <td>NaN</td>
+      <td>15.0</td>
+      <td>77.0</td>
+      <td>NaN</td>
+      <td>11.0</td>
+      <td>1102.0</td>
+      <td>23.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>807.0</td>
+      <td>NaN</td>
+      <td>36.0</td>
+      <td>31.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>152.0</td>
+    </tr>
+    <tr>
+      <th>BG</th>
+      <td>126.0</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>44.0</td>
+      <td>382.0</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>461.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>77.0</td>
+      <td>NaN</td>
+      <td>144.0</td>
+      <td>36.0</td>
+      <td>297.0</td>
+      <td>107.0</td>
+      <td>18.0</td>
+      <td>28.0</td>
+      <td>45.0</td>
+    </tr>
+    <tr>
+      <th>CH</th>
+      <td>9.0</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>191.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>CY</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>CZ</th>
+      <td>454.0</td>
+      <td>227.0</td>
+      <td>24.0</td>
+      <td>84.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2317.0</td>
+      <td>58.0</td>
+      <td>NaN</td>
+      <td>37.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>304.0</td>
+      <td>45.0</td>
+      <td>201.0</td>
+      <td>26.0</td>
+      <td>17.0</td>
+      <td>73.0</td>
+      <td>33.0</td>
+      <td>631.0</td>
+      <td>137.0</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>2050.0</td>
+      <td>1981.0</td>
+      <td>8.0</td>
+      <td>1752.0</td>
+      <td>NaN</td>
+      <td>443.0</td>
+      <td>NaN</td>
+      <td>1257.0</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>2741.0</td>
+      <td>106.0</td>
+      <td>432.0</td>
+      <td>306.0</td>
+      <td>32.0</td>
+      <td>270.0</td>
+      <td>25.0</td>
+      <td>59.0</td>
+      <td>689.0</td>
+    </tr>
+    <tr>
+      <th>DK</th>
+      <td>47.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>344.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>79.0</td>
+      <td>400.0</td>
+      <td>45.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>643.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>65.0</td>
+    </tr>
+    <tr>
+      <th>EE</th>
+      <td>11.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>194.0</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>108.0</td>
+      <td>54.0</td>
+      <td>15.0</td>
+      <td>41.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>88.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EL</th>
+      <td>282.0</td>
+      <td>150.0</td>
+      <td>95.0</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>155.0</td>
+      <td>2358.0</td>
+      <td>95.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>533.0</td>
+      <td>NaN</td>
+      <td>156.0</td>
+      <td>83.0</td>
+      <td>141.0</td>
+      <td>72.0</td>
+      <td>NaN</td>
+      <td>39.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>ES</th>
+      <td>459.0</td>
+      <td>1511.0</td>
+      <td>39.0</td>
+      <td>768.0</td>
+      <td>NaN</td>
+      <td>226.0</td>
+      <td>8339.0</td>
+      <td>543.0</td>
+      <td>NaN</td>
+      <td>27.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>3586.0</td>
+      <td>166.0</td>
+      <td>451.0</td>
+      <td>3140.0</td>
+      <td>13.0</td>
+      <td>366.0</td>
+      <td>NaN</td>
+      <td>45.0</td>
+      <td>4054.0</td>
+    </tr>
+    <tr>
+      <th>FI</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>17.0</td>
+      <td>NaN</td>
+      <td>120.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>692.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>FR</th>
+      <td>28.0</td>
+      <td>1203.0</td>
+      <td>NaN</td>
+      <td>355.0</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>701.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>254.0</td>
+      <td>NaN</td>
+      <td>51.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>266.0</td>
+    </tr>
+    <tr>
+      <th>HR</th>
+      <td>172.0</td>
+      <td>96.0</td>
+      <td>1.0</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>51.0</td>
+      <td>432.0</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>68.0</td>
+      <td>NaN</td>
+      <td>30.0</td>
+      <td>NaN</td>
+      <td>21.0</td>
+      <td>13.0</td>
+      <td>184.0</td>
+      <td>21.0</td>
+      <td>58.0</td>
+    </tr>
+    <tr>
+      <th>HU</th>
+      <td>694.0</td>
+      <td>225.0</td>
+      <td>33.0</td>
+      <td>103.0</td>
+      <td>NaN</td>
+      <td>345.0</td>
+      <td>2203.0</td>
+      <td>75.0</td>
+      <td>12.0</td>
+      <td>38.0</td>
+      <td>...</td>
+      <td>11.0</td>
+      <td>279.0</td>
+      <td>23.0</td>
+      <td>149.0</td>
+      <td>39.0</td>
+      <td>231.0</td>
+      <td>30.0</td>
+      <td>141.0</td>
+      <td>243.0</td>
+      <td>273.0</td>
+    </tr>
+    <tr>
+      <th>IE</th>
+      <td>NaN</td>
+      <td>11.0</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>44.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>67.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>10.0</td>
+      <td>15.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>512.0</td>
+    </tr>
+    <tr>
+      <th>IT</th>
+      <td>294.0</td>
+      <td>292.0</td>
+      <td>NaN</td>
+      <td>659.0</td>
+      <td>NaN</td>
+      <td>7.0</td>
+      <td>1999.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>31.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>387.0</td>
+      <td>NaN</td>
+      <td>28.0</td>
+      <td>67.0</td>
+      <td>8.0</td>
+      <td>133.0</td>
+      <td>35.0</td>
+      <td>10.0</td>
+      <td>308.0</td>
+    </tr>
+    <tr>
+      <th>LI</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>LT</th>
+      <td>105.0</td>
+      <td>88.0</td>
+      <td>7.0</td>
+      <td>43.0</td>
+      <td>NaN</td>
+      <td>148.0</td>
+      <td>982.0</td>
+      <td>145.0</td>
+      <td>167.0</td>
+      <td>21.0</td>
+      <td>...</td>
+      <td>375.0</td>
+      <td>272.0</td>
+      <td>125.0</td>
+      <td>252.0</td>
+      <td>46.0</td>
+      <td>30.0</td>
+      <td>177.0</td>
+      <td>38.0</td>
+      <td>28.0</td>
+      <td>307.0</td>
+    </tr>
+    <tr>
+      <th>LU</th>
+      <td>5.0</td>
+      <td>105.0</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>148.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>58.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>LV</th>
+      <td>43.0</td>
+      <td>169.0</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>NaN</td>
+      <td>59.0</td>
+      <td>652.0</td>
+      <td>7.0</td>
+      <td>317.0</td>
+      <td>2.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>212.0</td>
+      <td>86.0</td>
+      <td>36.0</td>
+      <td>NaN</td>
+      <td>20.0</td>
+      <td>90.0</td>
+      <td>63.0</td>
+      <td>NaN</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>NL</th>
+      <td>99.0</td>
+      <td>3092.0</td>
+      <td>NaN</td>
+      <td>329.0</td>
+      <td>NaN</td>
+      <td>43.0</td>
+      <td>5428.0</td>
+      <td>393.0</td>
+      <td>15.0</td>
+      <td>50.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>194.0</td>
+      <td>41.0</td>
+      <td>13.0</td>
+      <td>15.0</td>
+      <td>723.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>769.0</td>
+    </tr>
+    <tr>
+      <th>NO</th>
+      <td>NaN</td>
+      <td>15.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>67.0</td>
+      <td>69.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>37.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>702.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PL</th>
+      <td>1203.0</td>
+      <td>2799.0</td>
+      <td>151.0</td>
+      <td>270.0</td>
+      <td>NaN</td>
+      <td>2879.0</td>
+      <td>22471.0</td>
+      <td>1566.0</td>
+      <td>191.0</td>
+      <td>406.0</td>
+      <td>...</td>
+      <td>274.0</td>
+      <td>3701.0</td>
+      <td>203.0</td>
+      <td>NaN</td>
+      <td>219.0</td>
+      <td>1617.0</td>
+      <td>1779.0</td>
+      <td>668.0</td>
+      <td>1731.0</td>
+      <td>4602.0</td>
+    </tr>
+    <tr>
+      <th>PT</th>
+      <td>59.0</td>
+      <td>212.0</td>
+      <td>NaN</td>
+      <td>162.0</td>
+      <td>NaN</td>
+      <td>91.0</td>
+      <td>854.0</td>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>202.0</td>
+      <td>7.0</td>
+      <td>61.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>60.0</td>
+      <td>15.0</td>
+      <td>30.0</td>
+      <td>460.0</td>
+    </tr>
+    <tr>
+      <th>RO</th>
+      <td>404.0</td>
+      <td>654.0</td>
+      <td>64.0</td>
+      <td>66.0</td>
+      <td>NaN</td>
+      <td>249.0</td>
+      <td>2152.0</td>
+      <td>93.0</td>
+      <td>NaN</td>
+      <td>150.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>424.0</td>
+      <td>10.0</td>
+      <td>325.0</td>
+      <td>18.0</td>
+      <td>NaN</td>
+      <td>156.0</td>
+      <td>43.0</td>
+      <td>126.0</td>
+      <td>211.0</td>
+    </tr>
+    <tr>
+      <th>SE</th>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>181.0</td>
+      <td>36.0</td>
+      <td>1.0</td>
+      <td>16.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>37.0</td>
+      <td>646.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>SI</th>
+      <td>477.0</td>
+      <td>178.0</td>
+      <td>NaN</td>
+      <td>48.0</td>
+      <td>NaN</td>
+      <td>104.0</td>
+      <td>1248.0</td>
+      <td>55.0</td>
+      <td>NaN</td>
+      <td>63.0</td>
+      <td>...</td>
+      <td>13.0</td>
+      <td>214.0</td>
+      <td>36.0</td>
+      <td>121.0</td>
+      <td>16.0</td>
+      <td>25.0</td>
+      <td>53.0</td>
+      <td>NaN</td>
+      <td>65.0</td>
+      <td>121.0</td>
+    </tr>
+    <tr>
+      <th>SK</th>
+      <td>701.0</td>
+      <td>252.0</td>
+      <td>17.0</td>
+      <td>170.0</td>
+      <td>NaN</td>
+      <td>982.0</td>
+      <td>2263.0</td>
+      <td>62.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>247.0</td>
+      <td>6.0</td>
+      <td>167.0</td>
+      <td>NaN</td>
+      <td>163.0</td>
+      <td>57.0</td>
+      <td>81.0</td>
+      <td>NaN</td>
+      <td>353.0</td>
+    </tr>
+    <tr>
+      <th>UK</th>
+      <td>14.0</td>
+      <td>271.0</td>
+      <td>NaN</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>8.0</td>
+      <td>274.0</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>226.0</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>15.0</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>30 rows × 30 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">df_lunl</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;0.1f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;destination&#39;, ylabel=&#39;origin&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_34_1.png" src="../../../_images/european-road-freight_34_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load_selected_com</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>carriage</th>
+      <th>destination</th>
+      <th>origin</th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>2013</th>
+      <th>2012</th>
+      <th>2011</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>48</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>BE</td>
+      <td>53.0</td>
+      <td>85.0</td>
+      <td>53.0</td>
+      <td>55.0</td>
+      <td>102.0</td>
+      <td>11.0</td>
+      <td>19.0</td>
+      <td>21.0</td>
+      <td>19.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>BG</td>
+      <td>126.0</td>
+      <td>97.0</td>
+      <td>229.0</td>
+      <td>119.0</td>
+      <td>147.0</td>
+      <td>95.0</td>
+      <td>220.0</td>
+      <td>131.0</td>
+      <td>66.0</td>
+      <td>46.0</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>CH</td>
+      <td>9.0</td>
+      <td>20.0</td>
+      <td>20.0</td>
+      <td>16.0</td>
+      <td>30.0</td>
+      <td>46.0</td>
+      <td>53.0</td>
+      <td>37.0</td>
+      <td>64.0</td>
+      <td>47.0</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>CY</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>CZ</td>
+      <td>454.0</td>
+      <td>478.0</td>
+      <td>678.0</td>
+      <td>577.0</td>
+      <td>700.0</td>
+      <td>779.0</td>
+      <td>722.0</td>
+      <td>651.0</td>
+      <td>572.0</td>
+      <td>589.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">df_load_selected_com</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;destination&quot;</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="s2">&quot;2019&quot;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">nx_draw_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;node_color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;node_size&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> 
+    <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="s2">&quot;edge_color&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span>
+<span class="p">}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">nx_draw_options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/european-road-freight_36_0.png" src="../../../_images/european-road-freight_36_0.png" />
+</div>
+</div>
+<section id="build-a-minimal-network">
+<h2><span class="section-number">11.1. </span>Build a Minimal Network<a class="headerlink" href="#build-a-minimal-network" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lunl_minimal</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AT&quot;</span><span class="p">,</span> <span class="s2">&quot;CH&quot;</span><span class="p">,</span> <span class="s2">&quot;DE&quot;</span><span class="p">]</span>
+<span class="n">df_lunl_minimal</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_load_selected_com</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;origin&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;destination&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lunl_minimal</span><span class="p">,</span> <span class="n">lunl_minimal</span><span class="p">]</span>
+    
+<span class="n">df_lunl_minimal</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;0.1f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2018&quot;</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;0.1f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2017&quot;</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;0.1f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2016&quot;</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;0.1f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;destination&#39;, ylabel=&#39;origin&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_40_1.png" src="../../../_images/european-road-freight_40_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D_minimal</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">(</span><span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">nx_draw_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;node_color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;node_size&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> 
+    <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="s2">&quot;edge_color&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span>
+<span class="p">}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">D_minimal</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">nx_draw_options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/european-road-freight_42_0.png" src="../../../_images/european-road-freight_42_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="naive-model">
+<h1><span class="section-number">12. </span>Naive Model<a class="headerlink" href="#naive-model" title="Permalink to this headline">#</a></h1>
+<p>A naive idea is that the demand on the lane depends on the total demand of the origin and the total demand of the destination.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">naive_model_kpq</span><span class="p">(</span><span class="n">o_t</span><span class="p">,</span> <span class="n">d_t</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    
+    <span class="n">k_pq</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">o_t</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">d_t</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="n">q</span><span class="p">:</span>
+                <span class="n">k_pq</span><span class="p">[(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">)]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">q</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">o_t</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="n">d_t</span><span class="p">[</span><span class="n">q</span><span class="p">])</span>
+        
+    <span class="k">return</span> <span class="n">k_pq</span>
+
+<span class="k">def</span> <span class="nf">naive_model</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">k_pq</span><span class="p">,</span> <span class="n">o_t</span><span class="p">,</span> <span class="n">d_t</span><span class="p">):</span>
+    
+    <span class="n">g_pq</span> <span class="o">=</span> <span class="n">k_pq</span><span class="p">[(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">)]</span> <span class="o">*</span> <span class="p">(</span><span class="n">o_t</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="n">d_t</span><span class="p">[</span><span class="n">q</span><span class="p">])</span>
+        
+    <span class="k">return</span> <span class="n">g_pq</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AT&#39;: {&#39;AT&#39;: nan, &#39;CH&#39;: 9.0, &#39;DE&#39;: 2050.0},
+ &#39;CH&#39;: {&#39;AT&#39;: 98.0, &#39;CH&#39;: nan, &#39;DE&#39;: 1752.0},
+ &#39;DE&#39;: {&#39;AT&#39;: 1404.0, &#39;CH&#39;: 191.0, &#39;DE&#39;: nan}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AT&#39;: 1502.0, &#39;CH&#39;: 200.0, &#39;DE&#39;: 3802.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AT&#39;: 2059.0, &#39;CH&#39;: 1850.0, &#39;DE&#39;: 1595.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naive_kpqs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">naive_kpqs</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">naive_model_kpq</span><span class="p">(</span><span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">],</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="n">year</span><span class="p">],</span> <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naive_kpqs</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(&#39;AT&#39;, &#39;CH&#39;): 8.37794141501648e-06,
+ (&#39;AT&#39;, &#39;DE&#39;): 0.00046207319268525015,
+ (&#39;CH&#39;, &#39;AT&#39;): 0.00020008003201280514,
+ (&#39;CH&#39;, &#39;DE&#39;): 0.0019352568613652356,
+ (&#39;DE&#39;, &#39;AT&#39;): 0.00016255303019258526,
+ (&#39;DE&#39;, &#39;CH&#39;): 3.604375661642385e-05}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">6.18</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">naive_kpqs</span><span class="p">[</span><span class="n">year</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">naive_kpqs</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+        <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">naive_kpqs</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span>
+        <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">key</span>
+    <span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fadfa5c7e90&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_51_1.png" src="../../../_images/european-road-freight_51_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_demand_origin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;2019&#39;: {&#39;AT&#39;: 1502.0, &#39;CH&#39;: 200.0, &#39;DE&#39;: 3802.0},
+ &#39;2018&#39;: {&#39;AT&#39;: 1568.0, &#39;CH&#39;: 163.0, &#39;DE&#39;: 3873.0},
+ &#39;2017&#39;: {&#39;AT&#39;: 1609.0, &#39;CH&#39;: 202.0, &#39;DE&#39;: 3797.0},
+ &#39;2016&#39;: {&#39;AT&#39;: 1606.0, &#39;CH&#39;: 171.0, &#39;DE&#39;: 4192.0},
+ &#39;2015&#39;: {&#39;AT&#39;: 1681.0, &#39;CH&#39;: 306.0, &#39;DE&#39;: 4205.0},
+ &#39;2014&#39;: {&#39;AT&#39;: 1685.0, &#39;CH&#39;: 210.0, &#39;DE&#39;: 4310.0},
+ &#39;2013&#39;: {&#39;AT&#39;: 1661.0, &#39;CH&#39;: 310.0, &#39;DE&#39;: 4545.0},
+ &#39;2012&#39;: {&#39;AT&#39;: 2042.0, &#39;CH&#39;: 410.0, &#39;DE&#39;: 4268.0},
+ &#39;2011&#39;: {&#39;AT&#39;: 2292.0, &#39;CH&#39;: 439.0, &#39;DE&#39;: 4740.0},
+ &#39;2010&#39;: {&#39;AT&#39;: 2253.0, &#39;CH&#39;: 476.0, &#39;DE&#39;: 4780.0}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">6.18</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">total_demand_origin</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+        <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">total_demand_origin</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span>
+        <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">key</span>
+    <span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fadfa269810&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_53_1.png" src="../../../_images/european-road-freight_53_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">6.18</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">total_demand_origin</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+        <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">total_demand_dest</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span>
+        <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">key</span>
+    <span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fadfb5bce90&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_54_1.png" src="../../../_images/european-road-freight_54_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validate_year</span> <span class="o">=</span> <span class="s2">&quot;2018&quot;</span>
+
+<span class="n">naive_kpq</span> <span class="o">=</span> <span class="n">naive_kpqs</span><span class="p">[</span><span class="s2">&quot;2017&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i_o</span> <span class="ow">in</span> <span class="n">lunl_minimal</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i_d</span> <span class="ow">in</span> <span class="n">lunl_minimal</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i_o</span> <span class="o">!=</span> <span class="n">i_d</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">i_o</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">i_d</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">,</span>
+                <span class="n">naive_model</span><span class="p">(</span><span class="n">i_o</span><span class="p">,</span> <span class="n">i_d</span><span class="p">,</span> <span class="n">naive_kpq</span><span class="p">,</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="n">validate_year</span><span class="p">],</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="n">validate_year</span><span class="p">])</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(AT, CH): 19.260730555573353
+(AT, DE): 1753.906890057625
+(CH, AT): 115.69937369519833
+(CH, DE): 1456.1178935718347
+(DE, AT): 1584.0376921017196
+(DE, CH): 183.45562557526424
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_lunl_minimal</span><span class="p">[</span><span class="n">validate_year</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AT&#39;: {&#39;AT&#39;: nan, &#39;CH&#39;: 20.0, &#39;DE&#39;: 2000.0},
+ &#39;CH&#39;: {&#39;AT&#39;: 140.0, &#39;CH&#39;: nan, &#39;DE&#39;: 1873.0},
+ &#39;DE&#39;: {&#39;AT&#39;: 1428.0, &#39;CH&#39;: 143.0, &#39;DE&#39;: nan}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2017&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AT&#39;: {&#39;AT&#39;: nan, &#39;CH&#39;: 20.0, &#39;DE&#39;: 1896.0},
+ &#39;CH&#39;: {&#39;AT&#39;: 136.0, &#39;CH&#39;: nan, &#39;DE&#39;: 1901.0},
+ &#39;DE&#39;: {&#39;AT&#39;: 1473.0, &#39;CH&#39;: 182.0, &#39;DE&#39;: nan}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2018&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2017&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>destination</th>
+      <th>AT</th>
+      <th>CH</th>
+      <th>DE</th>
+    </tr>
+    <tr>
+      <th>origin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AT</th>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>-45.0</td>
+    </tr>
+    <tr>
+      <th>CH</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>-39.0</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>104.0</td>
+      <td>-28.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2015&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AT&#39;: 1681.0, &#39;CH&#39;: 306.0, &#39;DE&#39;: 4205.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2015&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AT&#39;: 2063.0, &#39;CH&#39;: 2306.0, &#39;DE&#39;: 1823.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_multiplications</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">df_mass_mul_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">total_demand_dest</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="p">),</span>
+        <span class="n">columns</span><span class="o">=</span><span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="n">df_mass_mul_year</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">mass_multiplications</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_mass_mul_year</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">mass_multiplications</span><span class="p">[</span><span class="s2">&quot;2018&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AT</th>
+      <th>CH</th>
+      <th>DE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AT</th>
+      <td>3167360.0</td>
+      <td>3156384.0</td>
+      <td>2463328.0</td>
+    </tr>
+    <tr>
+      <th>CH</th>
+      <td>329260.0</td>
+      <td>328119.0</td>
+      <td>256073.0</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>7823460.0</td>
+      <td>7796349.0</td>
+      <td>6084483.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_1</span> <span class="o">=</span> <span class="s2">&quot;2014&quot;</span>
+<span class="n">year_2</span> <span class="o">=</span> <span class="s2">&quot;2015&quot;</span>
+
+<span class="n">df_mass_mul_diff</span> <span class="o">=</span> <span class="n">mass_multiplications</span><span class="p">[</span><span class="n">year_2</span><span class="p">]</span> <span class="o">-</span> <span class="n">mass_multiplications</span><span class="p">[</span><span class="n">year_1</span><span class="p">]</span>
+<span class="n">df_mass_mul_diff</span><span class="p">[</span><span class="n">df_mass_mul_diff</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df_mass_mul_diff</span><span class="p">[</span><span class="n">df_mass_mul_diff</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">df_mass_mul_diff</span><span class="o">.</span><span class="n">values</span><span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">df_mass_mul_diff</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span><span class="o">*</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+
+
+<span class="n">df_demand_diff</span> <span class="o">=</span> <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="n">year_2</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="n">year_1</span><span class="p">]</span>
+<span class="n">df_demand_diff</span><span class="p">[</span><span class="n">df_demand_diff</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df_demand_diff</span><span class="p">[</span><span class="n">df_demand_diff</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">df_mass_mul_diff</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">df_demand_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/leima/anaconda3/envs/theflow-code/lib/python3.7/site-packages/ipykernel_launcher.py:7: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  import sys
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fadfb8cf850&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_62_2.png" src="../../../_images/european-road-freight_62_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_demand_diff</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>destination</th>
+      <th>AT</th>
+      <th>CH</th>
+      <th>DE</th>
+    </tr>
+    <tr>
+      <th>origin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AT</th>
+      <td>NaN</td>
+      <td>-1.0</td>
+      <td>-1.0</td>
+    </tr>
+    <tr>
+      <th>CH</th>
+      <td>-1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>-1.0</td>
+      <td>-1.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="four-stage-model">
+<h1><span class="section-number">13. </span>Four Stage Model<a class="headerlink" href="#four-stage-model" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load_selected_com_minimal</span> <span class="o">=</span> <span class="n">df_load_selected_com</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_load_selected_com</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">lunl_minimal</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
+        <span class="n">df_load_selected_com</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">lunl_minimal</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+<span class="n">df_load_selected_com_minimal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>carriage</th>
+      <th>destination</th>
+      <th>origin</th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>2013</th>
+      <th>2012</th>
+      <th>2011</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>50</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>CH</td>
+      <td>9.0</td>
+      <td>20.0</td>
+      <td>20.0</td>
+      <td>16.0</td>
+      <td>30.0</td>
+      <td>46.0</td>
+      <td>53.0</td>
+      <td>37.0</td>
+      <td>64.0</td>
+      <td>47.0</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>AT</td>
+      <td>DE</td>
+      <td>2050.0</td>
+      <td>2000.0</td>
+      <td>1896.0</td>
+      <td>2076.0</td>
+      <td>2033.0</td>
+      <td>2057.0</td>
+      <td>2250.0</td>
+      <td>2055.0</td>
+      <td>2393.0</td>
+      <td>2536.0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>CH</td>
+      <td>AT</td>
+      <td>98.0</td>
+      <td>140.0</td>
+      <td>136.0</td>
+      <td>150.0</td>
+      <td>134.0</td>
+      <td>137.0</td>
+      <td>176.0</td>
+      <td>217.0</td>
+      <td>219.0</td>
+      <td>246.0</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>CH</td>
+      <td>DE</td>
+      <td>1752.0</td>
+      <td>1873.0</td>
+      <td>1901.0</td>
+      <td>2116.0</td>
+      <td>2172.0</td>
+      <td>2253.0</td>
+      <td>2295.0</td>
+      <td>2213.0</td>
+      <td>2347.0</td>
+      <td>2244.0</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>DE</td>
+      <td>AT</td>
+      <td>1404.0</td>
+      <td>1428.0</td>
+      <td>1473.0</td>
+      <td>1456.0</td>
+      <td>1547.0</td>
+      <td>1548.0</td>
+      <td>1485.0</td>
+      <td>1825.0</td>
+      <td>2073.0</td>
+      <td>2007.0</td>
+    </tr>
+    <tr>
+      <th>264</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>DE</td>
+      <td>CH</td>
+      <td>191.0</td>
+      <td>143.0</td>
+      <td>182.0</td>
+      <td>155.0</td>
+      <td>276.0</td>
+      <td>164.0</td>
+      <td>257.0</td>
+      <td>373.0</td>
+      <td>375.0</td>
+      <td>429.0</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>MIO_TKM</td>
+      <td>HIRE</td>
+      <td>DE</td>
+      <td>DE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load_selected_com_minimal_origin</span> <span class="o">=</span> <span class="n">df_load_selected_com_minimal</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;origin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_load_selected_com_minimal_origin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>2013</th>
+      <th>2012</th>
+      <th>2011</th>
+      <th>2010</th>
+    </tr>
+    <tr>
+      <th>origin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AT</th>
+      <td>1502.0</td>
+      <td>1568.0</td>
+      <td>1609.0</td>
+      <td>1606.0</td>
+      <td>1681.0</td>
+      <td>1685.0</td>
+      <td>1661.0</td>
+      <td>2042.0</td>
+      <td>2292.0</td>
+      <td>2253.0</td>
+    </tr>
+    <tr>
+      <th>CH</th>
+      <td>200.0</td>
+      <td>163.0</td>
+      <td>202.0</td>
+      <td>171.0</td>
+      <td>306.0</td>
+      <td>210.0</td>
+      <td>310.0</td>
+      <td>410.0</td>
+      <td>439.0</td>
+      <td>476.0</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>3802.0</td>
+      <td>3873.0</td>
+      <td>3797.0</td>
+      <td>4192.0</td>
+      <td>4205.0</td>
+      <td>4310.0</td>
+      <td>4545.0</td>
+      <td>4268.0</td>
+      <td>4740.0</td>
+      <td>4780.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_load_selected_com_minimal_dest</span> <span class="o">=</span> <span class="n">df_load_selected_com_minimal</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;destination&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_load_selected_com_minimal_dest</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2019</th>
+      <th>2018</th>
+      <th>2017</th>
+      <th>2016</th>
+      <th>2015</th>
+      <th>2014</th>
+      <th>2013</th>
+      <th>2012</th>
+      <th>2011</th>
+      <th>2010</th>
+    </tr>
+    <tr>
+      <th>destination</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AT</th>
+      <td>2059.0</td>
+      <td>2020.0</td>
+      <td>1916.0</td>
+      <td>2092.0</td>
+      <td>2063.0</td>
+      <td>2103.0</td>
+      <td>2303.0</td>
+      <td>2092.0</td>
+      <td>2457.0</td>
+      <td>2583.0</td>
+    </tr>
+    <tr>
+      <th>CH</th>
+      <td>1850.0</td>
+      <td>2013.0</td>
+      <td>2037.0</td>
+      <td>2266.0</td>
+      <td>2306.0</td>
+      <td>2390.0</td>
+      <td>2471.0</td>
+      <td>2430.0</td>
+      <td>2566.0</td>
+      <td>2490.0</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>1595.0</td>
+      <td>1571.0</td>
+      <td>1655.0</td>
+      <td>1611.0</td>
+      <td>1823.0</td>
+      <td>1712.0</td>
+      <td>1742.0</td>
+      <td>2198.0</td>
+      <td>2448.0</td>
+      <td>2436.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_demand_dest</span> <span class="o">=</span> <span class="n">df_load_selected_com_minimal_dest</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="n">total_demand_origin</span> <span class="o">=</span> <span class="n">df_load_selected_com_minimal_origin</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-a-symmetric-linear-model">
+<h1><span class="section-number">14. </span>Build a Symmetric Linear Model<a class="headerlink" href="#build-a-symmetric-linear-model" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.solvers</span> <span class="kn">import</span> <span class="n">solve</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lunl_minimal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;AT&#39;, &#39;CH&#39;, &#39;DE&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f12_s</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f12&quot;</span><span class="p">)</span>
+<span class="n">f13_s</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f13&quot;</span><span class="p">)</span>
+<span class="n">f23_s</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f23&quot;</span><span class="p">)</span>
+
+<span class="n">sols_s</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span> <span class="o">=</span> <span class="p">[</span><span class="n">total_demand_dest</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lunl_minimal</span><span class="p">]</span>
+
+    <span class="n">eqns</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">f12_s</span> <span class="o">*</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">f13_s</span> <span class="o">*</span> <span class="n">d3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">f12_s</span> <span class="o">*</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">f23_s</span> <span class="o">*</span> <span class="n">d3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">f13_s</span> <span class="o">*</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">f23_s</span> <span class="o">*</span> <span class="n">d2</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="p">]</span>
+    <span class="n">sols_s</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">eqns</span><span class="p">,</span> <span class="n">f12_s</span><span class="p">,</span> <span class="n">f13_s</span><span class="p">,</span> <span class="n">f23_s</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">sols_s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;2019&#39;: {f12: 0.000303742304713650, f13: 0.000274656260990437, f23: 0.000234855545200373}, &#39;2018&#39;: {f12: 0.000302735191551942, f13: 0.000248627663530198, f23: 0.000247278747972678}, &#39;2017&#39;: {f12: 0.000294397077859187, f13: 0.000241881058852468, f23: 0.000263404953970874}, &#39;2016&#39;: {f12: 0.000289739080834145, f13: 0.000213191336331364, f23: 0.000244485315266896}, &#39;2015&#39;: {f12: 0.000267589995791711, f13: 0.000210058952114270, f23: 0.000245727832518760}, &#39;2014&#39;: {f12: 0.000276652003414130, f13: 0.000197898196168358, f23: 0.000244276189731357}, &#39;2013&#39;: {f12: 0.000266398955631746, f13: 0.000196170023326037, f23: 0.000221861771056308}, &#39;2012&#39;: {f12: 0.000228579971516024, f13: 0.000202252351781648, f23: 0.000237402502087569}, &#39;2011&#39;: {f12: 0.000204213961033914, f13: 0.000194439124177686, f23: 0.000203531984370781}, &#39;2010&#39;: {f12: 0.000205001189426696, f13: 0.000200963480430019, f23: 0.000193137080341069}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define the model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="n">sols_s</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="n">f12_s</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00030374230471365
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gravity_model</span><span class="p">(</span><span class="n">coef_o_d</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">dq</span><span class="p">,</span> <span class="n">all_coeff</span><span class="p">):</span>
+    
+    <span class="n">g</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">all_coeff</span><span class="p">[</span><span class="n">coef_o_d</span><span class="p">]</span> <span class="o">*</span> <span class="n">op</span> <span class="o">*</span> <span class="n">dq</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">g</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;AT&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1502.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gravity_model</span><span class="p">(</span><span class="n">f12_s</span><span class="p">,</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;AT&quot;</span><span class="p">],</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;CH&quot;</span><span class="p">],</span> <span class="n">sols_s</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>844.0087421078192
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gravity_model</span><span class="p">(</span><span class="n">f13_s</span><span class="p">,</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;AT&quot;</span><span class="p">],</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;DE&quot;</span><span class="p">],</span> <span class="n">sols_s</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>657.9912578921808
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gravity_model</span><span class="p">(</span><span class="n">f23_s</span><span class="p">,</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;CH&quot;</span><span class="p">],</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;DE&quot;</span><span class="p">],</span> <span class="n">sols_s</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>74.91891891891892
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results are far from being correct</p>
+</section>
+<section id="introduce-symmetry-breaking">
+<h1><span class="section-number">15. </span>Introduce Symmetry Breaking<a class="headerlink" href="#introduce-symmetry-breaking" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lunl_minimal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;AT&#39;, &#39;CH&#39;, &#39;DE&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f12</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f12&quot;</span><span class="p">)</span>
+<span class="n">f13</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f13&quot;</span><span class="p">)</span>
+<span class="n">f21</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f21&quot;</span><span class="p">)</span>
+<span class="n">f23</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f23&quot;</span><span class="p">)</span>
+<span class="n">f31</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f31&quot;</span><span class="p">)</span>
+<span class="n">f32</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;f32&quot;</span><span class="p">)</span>
+
+<span class="n">sols</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+
+    <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span> <span class="o">=</span> <span class="p">[</span><span class="n">total_demand_dest</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lunl_minimal</span><span class="p">]</span>
+
+    <span class="n">eqns</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">f12</span> <span class="o">*</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">f13</span> <span class="o">*</span> <span class="n">d3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">f21</span> <span class="o">*</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">f23</span> <span class="o">*</span> <span class="n">d3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">f31</span> <span class="o">*</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">f32</span> <span class="o">*</span> <span class="n">d2</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="p">]</span>
+    <span class="n">sols</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">eqns</span><span class="p">,</span> <span class="n">f12</span><span class="p">,</span> <span class="n">f13</span><span class="p">,</span> <span class="n">f21</span><span class="p">,</span> <span class="n">f23</span><span class="p">,</span> <span class="n">f31</span><span class="p">,</span> <span class="n">f32</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">sols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;2019&#39;: {f31: 0.000485672656629432 - 0.898494414764449*f32, f21: 0.000485672656629432 - 0.774647887323944*f23, f12: 0.000540540540540541 - 0.862162162162162*f13}, &#39;2018&#39;: {f31: 0.000495049504950495 - 0.996534653465347*f32, f21: 0.000495049504950495 - 0.777722772277228*f23, f12: 0.000496770988574267 - 0.780427223050174*f13}, &#39;2017&#39;: {f31: 0.000521920668058455 - 1.06315240083507*f32, f21: 0.000521920668058455 - 0.863778705636743*f23, f12: 0.000490918016691213 - 0.812469317623957*f13}, &#39;2016&#39;: {f31: 0.000478011472275335 - 1.08317399617591*f32, f21: 0.000478011472275335 - 0.770076481835564*f23, f12: 0.000441306266548985 - 0.710944395410415*f13}, &#39;2015&#39;: {f31: 0.000484730974309258 - 1.11778962675715*f32, f21: 0.000484730974309258 - 0.883664566165778*f23, f12: 0.000433651344319167 - 0.790546400693842*f13}, &#39;2014&#39;: {f31: 0.000475511174512601 - 1.13647170708512*f32, f21: 0.000475511174512601 - 0.814075130765573*f23, f12: 0.000418410041841004 - 0.716317991631799*f13}, &#39;2013&#39;: {f31: 0.000434216239687364 - 1.07294832826748*f32, f21: 0.000434216239687364 - 0.756404689535389*f23, f12: 0.000404694455685957 - 0.704977741804937*f13}, &#39;2012&#39;: {f31: 0.000478011472275335 - 1.16156787762906*f32, f21: 0.000478011472275335 - 1.05066921606119*f23, f12: 0.000411522633744856 - 0.904526748971193*f13}, &#39;2011&#39;: {f31: 0.000407000407000407 - 1.04436304436304*f32, f21: 0.000407000407000407 - 0.996336996336996*f23, f12: 0.00038971161340608 - 0.954014029618083*f13}, &#39;2010&#39;: {f31: 0.000387146728610143 - 0.963995354239257*f32, f21: 0.000387146728610143 - 0.943089430894309*f23, f12: 0.000401606425702811 - 0.978313253012048*f13}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_slice</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">system_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">[:</span><span class="n">year_slice</span><span class="p">]))</span>
+
+<span class="n">system_A_nested</span> <span class="o">=</span> <span class="p">[[</span>
+        <span class="p">[</span><span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="s2">&quot;CH&quot;</span><span class="p">],</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="s2">&quot;DE&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="s2">&quot;AT&quot;</span><span class="p">],</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="s2">&quot;DE&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="s2">&quot;AT&quot;</span><span class="p">],</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="s2">&quot;CH&quot;</span><span class="p">]]</span>
+    <span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">[:</span><span class="n">year_slice</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">system_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">system_A_nested</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">system_A_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">system_A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+        <span class="n">system_A_T</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+                <span class="n">system_A</span><span class="p">,</span> <span class="n">system_A_T</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">system_y</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.62077592e-04, 2.38748790e-04, 4.80157321e-05, 2.41902148e-04,
+       5.76484352e-04, 5.31941301e-04])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;AT&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;CH&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1283.9750053370456
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">total_demand_origin</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;AT&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">total_demand_dest</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">][</span><span class="s2">&quot;DE&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>571.968089786805
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">df_lunl_minimal</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;0.1f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;destination&#39;, ylabel=&#39;origin&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/european-road-freight_90_1.png" src="../../../_images/european-road-freight_90_1.png" />
+</div>
+</div>
+<p>The results are still not as expected! We need to introduce more knowledge in to the coefficients. Now we need to introduce the gravity model!</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/economics/road_freight"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="airfreight-infra.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>Air Freight Infrastructure</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="eurostats_modal_split.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Modal Split in Transportation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By LM<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,2171 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>25. Road Speed Limits by Countries &#8212; LM Mini Lab</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="26. Box-Cox Transformation" href="../../statistics/box-cox-transformation.html" />
+    <link rel="prev" title="21. Road/Rail Freight" href="road_freight_history.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/chemisch.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">LM Mini Lab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Mini Lab
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fun/cologne-xkcd.html">
+   1. Colors in Cologne
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fun/experiments-in-biology.html">
+   2. Experiments in Biology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../social/women-at-work.html">
+   3. Work, Men, Women
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data_imputation/holidays.html">
+   4. Dealing with Holidays in Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data_management/datapackage_demo.html">
+   5. Demo for datapackage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientist_names/scientist_names.html">
+   6. Scientist Names
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../space_exploration/space-exploration.html">
+   7. Space Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../visualization/airplane/visualizing-airtraffic.html">
+   8. Flight Routes in USA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="airfreight-infra.html">
+   9. Air Freight Infrastructure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="european-road-freight.html">
+   10. Road Freight in EU
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eurostats_modal_split.html">
+   16. Modal Split in Transportation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ocean-freight-infra.html">
+   20. Ocean Freight Infra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="road_freight_history.html">
+   21. Road/Rail Freight
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   25. Road Speed Limits by Countries
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/box-cox-transformation.html">
+   26. Box-Cox Transformation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/centering-matrix.html">
+   27. Centering Matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/confidence-interval.html">
+   28. Error Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/correlations.html">
+   30. Correlations in Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../visualization/anscombes-quartet.html">
+   31. Anscombes Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/anova.html">
+   32. ANOVA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/kl-divergence.html">
+   33. KL Divergence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/ttest.html">
+   35. TTest
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Graph
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-cuts.html">
+   37. Graph Cuts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-laplacian.html">
+   38. Graph Laplacian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-node-statistics.html">
+   39. Node Statistics on Graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/traditional-graph-generation.html">
+   41. Some Interesting Graphs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/pytorch_tricks.html">
+   43. Some Simple PyTorch Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../decision_tree/decision_tree_example.html">
+   44. Generate Fake Data for WFH Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../random_forest/random_forest_benchmark.html">
+   45. Random Forest Playground
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistic_regression/logistic_regression_basics.html">
+   48. Logistic Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../vc_dimension/growth_function.html">
+   49. Growth Function and VC Dimension
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Time Series
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistics/air_freight_time_series_data.html">
+   50. Air Freight Time Series Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Economics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../supply-demand.html">
+   51. Supply and Demand
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Interplanetary Immigration Center
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mars_base_locations/base_locations.html">
+   52. Mars Base Locations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/emptymalei/mini-lab/master?urlpath=tree/notebooks/notebooks/economics/road_freight/road-speed-limits-by-countries.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab/issues/new?title=Issue%20on%20page%20%2Fnotebooks/economics/road_freight/road-speed-limits-by-countries.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/notebooks/economics/road_freight/road-speed-limits-by-countries.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-data">
+   25.1. Get data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clean-up-dataset">
+   25.2. Clean Up Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validate-results">
+   25.3. Validate results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-results">
+   25.4. Save Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualize">
+   25.5. Visualize
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Road Speed Limits by Countries</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-data">
+   25.1. Get data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clean-up-dataset">
+   25.2. Clean Up Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validate-results">
+   25.3. Validate results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-results">
+   25.4. Save Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualize">
+   25.5. Visualize
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="road-speed-limits-by-countries">
+<h1><span class="section-number">25. </span>Road Speed Limits by Countries<a class="headerlink" href="#road-speed-limits-by-countries" title="Permalink to this headline">#</a></h1>
+<p>We use the data from wikipedia article:</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Speed_limits_by_country">https://en.wikipedia.org/wiki/Speed_limits_by_country</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="get-data">
+<h2><span class="section-number">25.1. </span>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_link</span> <span class="o">=</span> <span class="s2">&quot;https://en.wikipedia.org/wiki/Speed_limits_by_country&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">wiki_link</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Within towns</th>
+      <th>Controlled-access highway/ motorway/ expressway</th>
+      <th>Outside built-up areas/regional highways</th>
+      <th>Automobiles &amp; motorcycles</th>
+      <th>Lorries or automobiles with trailer</th>
+      <th>Enforcement tolerance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Albania[4][5]</td>
+      <td>40</td>
+      <td>110</td>
+      <td>80</td>
+      <td>80–90</td>
+      <td>60–70</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Argentina</td>
+      <td>40–60</td>
+      <td>100–130</td>
+      <td>80</td>
+      <td>80–110</td>
+      <td>80</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Australia[6]</td>
+      <td>40–60</td>
+      <td>100–130[fn 2]</td>
+      <td>100[fn 3]</td>
+      <td>100–110[fn 2]</td>
+      <td>100[fn 3]</td>
+      <td>3 in Victoria, 10% over speed limit in other s...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Austria[7]</td>
+      <td>50</td>
+      <td>130</td>
+      <td>80–100</td>
+      <td>100</td>
+      <td>80–100</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Azerbaijan[8]</td>
+      <td>40–60</td>
+      <td>110</td>
+      <td>NaN</td>
+      <td>90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Country&#39;, &#39;Within towns&#39;,
+       &#39;Controlled-access highway/ motorway/ expressway&#39;,
+       &#39;Outside built-up areas/regional highways&#39;, &#39;Automobiles &amp; motorcycles&#39;,
+       &#39;Lorries or automobiles with trailer&#39;, &#39;Enforcement tolerance&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rename_cols</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Trucks, or automobiles with trailer&#39;</span><span class="p">:</span> <span class="s1">&#39;trucks_and_trailers&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Trucks, or automobiles with trailer, outside built-up areas/highways&#39;</span><span class="p">:</span> <span class="s1">&#39;trucks_and_trailers_non_built_up&#39;</span>
+<span class="p">}</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">rename_cols</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">rename_cols</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_trucks</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">rename_cols</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="nn">File ~/anaconda3/envs/mini-lab/lib/python3.9/site-packages/pandas/core/frame.py:3813,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3811</span>     <span class="k">if</span> <span class="n">is_iterator</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3812</span>         <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3813</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">_get_indexer_strict</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">3815</span> <span class="c1"># take() does not accept boolean indexers</span>
+<span class="g g-Whitespace">   </span><span class="mi">3816</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+
+<span class="nn">File ~/anaconda3/envs/mini-lab/lib/python3.9/site-packages/pandas/core/indexes/base.py:6070,</span> in <span class="ni">Index._get_indexer_strict</span><span class="nt">(self, key, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6067</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6068</span>     <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">new_indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_non_unique</span><span class="p">(</span><span class="n">keyarr</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">6070</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_missing</span><span class="p">(</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6072</span> <span class="n">keyarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6073</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">6074</span>     <span class="c1"># GH 42790 - Preserve name from an Index</span>
+
+<span class="nn">File ~/anaconda3/envs/mini-lab/lib/python3.9/site-packages/pandas/core/indexes/base.py:6133,</span> in <span class="ni">Index._raise_if_missing</span><span class="nt">(self, key, indexer, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6130</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;None of [</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">] are in the [</span><span class="si">{</span><span class="n">axis_name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6132</span> <span class="n">not_found</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ensure_index</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="n">missing_mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="ne">-&gt; </span><span class="mi">6133</span> <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">not_found</span><span class="si">}</span><span class="s2"> not in index&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &quot;[&#39;trucks_and_trailers&#39;, &#39;trucks_and_trailers_non_built_up&#39;] not in index&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>150</th>
+      <td>Vanuatu [76]</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Greenland (Denmark)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>Lebanon</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>Zambia</td>
+      <td>75</td>
+      <td>55-70</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>Sudan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>Jersey</td>
+      <td>NaN</td>
+      <td>64 (40 mph)</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>Moldova</td>
+      <td>70</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>CanadaMain article: Speed limits in Canada</td>
+      <td>20–120 (12-75 mph)</td>
+      <td>30–120 130 Proposed[17]</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Faroe Islands (Denmark)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>Uganda [70]</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">country</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Vanuatu [76]&#39;, &#39;South Korea (Republic of Korea)&#39;,
+       &#39;Albania[5][6]Main article: Speed limits in Albania&#39;,
+       &#39;Hungary Main article: Speed limits in Hungary&#39;, &#39;Morocco&#39;, &#39;Niue&#39;,
+       &#39;San Marino&#39;, &#39;Peru&#39;, &#39;Micronesia [48]&#39;,
+       &#39;Belarus Main article: Speed limits in Belarus&#39;, &#39;Nicaragua&#39;,
+       &#39;Palestine&#39;, &#39;Singapore&#39;,
+       &#39;Ireland Main article: Speed limits in the Republic of Ireland&#39;,
+       &#39;Georgia Main article: Speed limits in Georgia&#39;, &#39;Curaçao&#39;,
+       &#39;Czech Republic Main article: Speed limits in the Czech Republic&#39;,
+       &#39;Samoa&#39;, &#39;Norfolk Island&#39;, &#39;Finland&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="clean-up-dataset">
+<h2><span class="section-number">25.2. </span>Clean Up Dataset<a class="headerlink" href="#clean-up-dataset" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_country_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;Main article&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">res</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_trucks</span><span class="o">.</span><span class="n">country</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_country_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/lei.ma/opt/anaconda3/envs/mini-code/lib/python3.6/site-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>122</th>
+      <td>Serbia</td>
+      <td>70</td>
+      <td>80 (car) 90/100 (truck)</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>Iraq</td>
+      <td>90</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Fiji</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>Mongolia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Georgia</td>
+      <td>60</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>Norfolk Island</td>
+      <td>NaN</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>Kyrgyzstan</td>
+      <td>70</td>
+      <td>90-70</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Ethiopia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>Spain</td>
+      <td>70–80[fn 32]</td>
+      <td>80–90[fn 33]</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Chile</td>
+      <td>100 (90 for trucks)</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Belgium: Wallonia Brussels</td>
+      <td>60–90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Christmas Island</td>
+      <td>NaN</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Egypt</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>Lebanon</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>Namibia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Canada</td>
+      <td>20–120 (12-75 mph)</td>
+      <td>30–120 130 Proposed[17]</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Ecuador</td>
+      <td>40–70 (50–90 for buses)</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Benin</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>Qatar</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Austria</td>
+      <td>70–100[fn 5]</td>
+      <td>80–100[fn 6]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([nan, &#39;60–70&#39;, &#39;80&#39;, &#39;90&#39;, nan, nan,
+       &#39;80–100 trucks and road trains only&#39;, &#39;70–100[fn 5]&#39;, nan, nan,
+       nan, nan, &#39;70&#39;, &#39;60–70&#39;, &#39;60–90&#39;, nan, nan, nan, &#39;80&#39;, &#39;90&#39;, &#39;80&#39;,
+       &#39;70&#39;, &#39;80&#39;, nan, &#39;20–120 (12-75\xa0mph)&#39;, &#39;60-80&#39;,
+       &#39;100 (90 for trucks)&#39;, nan, &#39;60&#39;, &#39;60&#39;,
+       &#39;90 (buses), 75 (heavy goods)&#39;, &#39;80&#39;, nan, nan, &#39;80&#39;, &#39;80&#39;, &#39;80&#39;,
+       nan, &#39;40–70 (50–90 for buses)&#39;, nan, nan, &#39;90&#39;, nan, nan, nan,
+       &#39;80&#39;, &#39;60[fn 14]-110&#39;, &#39;60&#39;,
+       &#39;80 (trucks) / 100 (automobiles with trailer and buses)&#39;, nan,
+       &#39;80 (school buses 60)&#39;, nan, nan, nan, nan, nan, &#39;70[fn 20]&#39;, &#39;70&#39;,
+       &#39;80&#39;, &#39;65&#39;, &#39;80&#39;, &#39;70–110&#39;, &#39;90&#39;, &#39;80–90&#39;, nan, &#39;80&#39;, &#39;70&#39;, nan,
+       &#39;80 (over 8t)&#39;, nan, nan, &#39;30&#39;, nan, &#39;70–100&#39;, &#39;70&#39;, &#39;90&#39;, &#39;80&#39;,
+       nan, nan, &#39;80&#39;, &#39;70–80–90&#39;, &#39;90&#39;, &#39;?&#39;, nan, &#39;100&#39;, nan, &#39;50–70&#39;,
+       nan, &#39;60&#39;, nan, &#39;70&#39;, nan, nan, nan, nan, &#39;95 (60\xa0mph)&#39;, nan,
+       nan, nan, &#39;regular within built-up area restrictions&#39;, nan,
+       &#39;80–90&#39;, nan, nan, nan, nan, nan,
+       &#39;80, 60 without brakes on trailer&#39;, &#39;80\xa0km/h&#39;, &#39;60&#39;, nan, nan,
+       &#39;70–80&#39;,
+       &#39;90 (buses)80 (for trucks)70 (for school buses and dangerous goods)&#39;,
+       &#39;40–80&#39;, &#39;70&#39;, &#39;70–80&#39;, nan, &#39;8090 (E-roads)&#39;, &#39;70–90&#39;, nan, nan,
+       &#39;70&#39;, &#39;60&#39;, &#39;90&#39;, &#39;80&#39;, &#39;60&#39;, &#39;40–80&#39;, &#39;60&#39;, &#39;40–60&#39;,
+       &#39;70–80[fn 32]&#39;, &#39;40 (25\xa0mph) (TukTuk)&#39;, nan, &#39;none&#39;,
+       &#39;Lorries 80 90 without trailer on motorways only (as posted). Buses 80 100 without trailer, on any road (as posted).&#39;,
+       &#39;80&#39;, &#39;60–80&#39;, &#39;100&#39;,
+       &#39;TruckBangkok Metropolitan &amp; Pattaya City: 60Others: 80Long VehicleBangkok Metropolitan &amp; Pattaya City: 45Others: 60&#39;,
+       &#39;50&#39;, nan, &#39;80&#39;, nan, nan, &#39;70–90&#39;, &#39;50–80&#39;,
+       &#39;80–97 (50-60\xa0mph) dependent on class (64–97 (40-60\xa0mph) in Scotland)[fn 39]&#39;,
+       &#39;Restrictions only in few states, typically 16\xa0km/h (10\xa0mph) lower&#39;,
+       &#39;none&#39;, &#39;70&#39;, nan, nan, &#39;40–60&#39;, &#39;70&#39;, nan, &#39;75&#39;, &#39;80&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_speed</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;max&quot;</span>
+    
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\[[^&gt;]+\]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\([^&gt;]+\)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[^0-9]&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+        
+    <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mode = </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2"> has not yet been implemented&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+        
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_string</span> <span class="o">=</span> <span class="n">df_trucks</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">138</span><span class="p">]</span><span class="o">.</span><span class="n">trucks_and_trailers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_speed</span><span class="p">(</span><span class="n">test_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="p">[</span><span class="s1">&#39;trucks_and_trailers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_speed</span><span class="p">)</span>
+<span class="n">df_trucks</span><span class="p">[</span><span class="s1">&#39;trucks_and_trailers_non_built_up&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers_non_built_up</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_speed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/lei.ma/opt/anaconda3/envs/mini-code/lib/python3.6/site-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+/Users/lei.ma/opt/anaconda3/envs/mini-code/lib/python3.6/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>117</th>
+      <td>Qatar</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>Vietnam</td>
+      <td>70.0</td>
+      <td>70.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Croatia</td>
+      <td>80.0</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Bosnia and Herzegovina</td>
+      <td>80.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Andorra</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>Nigeria</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>North Korea</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Micronesia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>Papua New Guinea</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Iran</td>
+      <td>110.0</td>
+      <td>110.0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>India</td>
+      <td>65.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>Vatican</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Finland</td>
+      <td>80.0</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>Malta</td>
+      <td>60.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Belarus</td>
+      <td>70.0</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Germany</td>
+      <td>80.0</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Cuba</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>France</td>
+      <td>110.0</td>
+      <td>130.0</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>Russia</td>
+      <td>90.0</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>Uruguay</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="validate-results">
+<h2><span class="section-number">25.3. </span>Validate results<a class="headerlink" href="#validate-results" title="Permalink to this headline">#</a></h2>
+<p>Check if speed limit is too high</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span> <span class="o">&gt;</span> <span class="mi">200</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>118</th>
+      <td>Romania</td>
+      <td>8090.0</td>
+      <td>90.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here is the original data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span> <span class="o">&gt;</span> <span class="mi">200</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Within towns(officially: within built-up area[4] or Urban road)</th>
+      <th>Automobiles &amp; motorcycles (single carriageway)</th>
+      <th>Automobiles &amp; motorcycles Expressways/motorways (dual carriageway)</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+      <th>Enforcement tolerance</th>
+      <th>Unnamed: 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>118</th>
+      <td>Romania Main article: Speed limits in Romania</td>
+      <td>5070 (some DN stretches)</td>
+      <td>90100 (E-roads)</td>
+      <td>130[fn 30] (motorways)100 (expressways)</td>
+      <td>8090 (E-roads)</td>
+      <td>90 (expressways)110 (motorways)</td>
+      <td>10 km/h</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Other columns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers_non_built_up</span> <span class="o">&gt;</span> <span class="mi">200</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Within towns(officially: within built-up area[4] or Urban road)</th>
+      <th>Automobiles &amp; motorcycles (single carriageway)</th>
+      <th>Automobiles &amp; motorcycles Expressways/motorways (dual carriageway)</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+      <th>Enforcement tolerance</th>
+      <th>Unnamed: 7</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Fix the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_trucks</span><span class="o">.</span><span class="n">country</span><span class="o">==</span><span class="s2">&quot;Romania&quot;</span><span class="p">,</span> <span class="s1">&#39;trucks_and_trailers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/lei.ma/opt/anaconda3/envs/mini-code/lib/python3.6/site-packages/pandas/core/indexing.py:965: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self.obj[item] = s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Validate modifications</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span> <span class="o">&gt;</span> <span class="mi">200</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Check if speed limti is too low</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span> <span class="o">&lt;</span> <span class="mi">50</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>71</th>
+      <td>Kiribati</td>
+      <td>30.0</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>Sri Lanka</td>
+      <td>40.0</td>
+      <td>70.0</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>United States</td>
+      <td>16.0</td>
+      <td>129.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span> <span class="o">&lt;</span> <span class="mi">50</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Within towns(officially: within built-up area[4] or Urban road)</th>
+      <th>Automobiles &amp; motorcycles (single carriageway)</th>
+      <th>Automobiles &amp; motorcycles Expressways/motorways (dual carriageway)</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+      <th>Enforcement tolerance</th>
+      <th>Unnamed: 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>71</th>
+      <td>Kiribati[38]</td>
+      <td>30 (church/school/bus stop zones; pedestrian c...</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>Sri Lanka</td>
+      <td>50 (31 mph)</td>
+      <td>70 (43 mph)</td>
+      <td>70–100 (43–62 mph) (when 100 in expressways: p...</td>
+      <td>40 (25 mph) (TukTuk)</td>
+      <td>40–70 (25–43 mph)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>United States[fn 1]Main articles: Speed limits...</td>
+      <td>40–120 (25–75 mph)[citation needed]</td>
+      <td>70-120 (45–75 mph)[fn 40]</td>
+      <td>100–130 (60–80 mph)[fn 41] 137 (85 mph) is all...</td>
+      <td>Restrictions only in few states, typically 16 ...</td>
+      <td>89–129 (55–80 mph)[fn 41]</td>
+      <td>States have jurisdiction over speed limits. En...</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_trucks</span><span class="o">.</span><span class="n">country</span><span class="o">==</span><span class="s2">&quot;United States&quot;</span><span class="p">,</span> <span class="s1">&#39;trucks_and_trailers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/lei.ma/opt/anaconda3/envs/mini-code/lib/python3.6/site-packages/pandas/core/indexing.py:965: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self.obj[item] = s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers</span> <span class="o">&lt;</span> <span class="mi">50</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>71</th>
+      <td>Kiribati</td>
+      <td>30.0</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>Sri Lanka</td>
+      <td>40.0</td>
+      <td>70.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>trucks_and_trailers_non_built_up column</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">df_trucks</span><span class="o">.</span><span class="n">trucks_and_trailers_non_built_up</span> <span class="o">&lt;</span> <span class="mi">50</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Within towns(officially: within built-up area[4] or Urban road)</th>
+      <th>Automobiles &amp; motorcycles (single carriageway)</th>
+      <th>Automobiles &amp; motorcycles Expressways/motorways (dual carriageway)</th>
+      <th>trucks_and_trailers</th>
+      <th>trucks_and_trailers_non_built_up</th>
+      <th>Enforcement tolerance</th>
+      <th>Unnamed: 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>71</th>
+      <td>Kiribati[38]</td>
+      <td>30 (church/school/bus stop zones; pedestrian c...</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>30</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="save-results">
+<h2><span class="section-number">25.4. </span>Save Results<a class="headerlink" href="#save-results" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_trucks</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;assets/export/road-speed-limits-by-country/speed_limits_by_countries.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="n">df_trucks</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|     | country                         | trucks_and_trailers   | trucks_and_trailers_non_built_up   |
+|----:|:--------------------------------|:----------------------|:-----------------------------------|
+|   0 | Åland (Finland)                 | -                     | -                                  |
+|   1 | Albania                         | 70.0                  | 80.0                               |
+|   2 | Argentina                       | 80.0                  | 80.0                               |
+|   3 | Armenia                         | 90.0                  | 90.0                               |
+|   4 | Aruba                           | -                     | -                                  |
+|   5 | Andorra                         | -                     | -                                  |
+|   6 | Australia                       | 100.0                 | 110.0                              |
+|   7 | Austria                         | 100.0                 | 100.0                              |
+|   8 | Azerbaijan                      | -                     | -                                  |
+|   9 | Azores                          | -                     | 80.0                               |
+|  10 | Bahamas                         | -                     | -                                  |
+|  11 | Bahrain                         | -                     | -                                  |
+|  12 | Belarus                         | 70.0                  | 90.0                               |
+|  13 | Belgium                         | 70.0                  | 90.0                               |
+|  14 | Belgium: Wallonia Brussels      | 90.0                  | 90.0                               |
+|  15 | Belize                          | -                     | -                                  |
+|  16 | Benin                           | -                     | -                                  |
+|  17 | Bhutan                          | -                     | -                                  |
+|  18 | Bosnia and Herzegovina          | 80.0                  | -                                  |
+|  19 | Brazil                          | 90.0                  | 90.0                               |
+|  20 | Brunei                          | 80.0                  | 80.0                               |
+|  21 | Bulgaria                        | 70.0                  | 100.0                              |
+|  22 | Cambodia                        | 80.0                  | 100.0                              |
+|  23 | Cameroon                        | -                     | -                                  |
+|  24 | Canada                          | 120.0                 | 130.0                              |
+|  25 | People&#39;s Republic of China      | 80.0                  | 100.0                              |
+|  26 | Chile                           | 100.0                 | 100.0                              |
+|  27 | Christmas Island                | -                     | 90.0                               |
+|  28 | Colombia                        | 60.0                  | 90.0                               |
+|  29 | Costa Rica                      | 60.0                  | 60.0                               |
+|  30 | Côte d&#39;Ivoire                   | 90.0                  | -                                  |
+|  31 | Croatia                         | 80.0                  | 80.0                               |
+|  32 | Cuba                            | -                     | -                                  |
+|  33 | Curaçao                         | -                     | -                                  |
+|  34 | Cyprus                          | 80.0                  | 100.0                              |
+|  35 | Czech Republic                  | 80.0                  | 80.0                               |
+|  36 | Denmark                         | 80.0                  | 80.0                               |
+|  37 | Dominican Republic              | -                     | -                                  |
+|  38 | Ecuador                         | 70.0                  | 90.0                               |
+|  39 | Egypt                           | -                     | -                                  |
+|  40 | El Salvador                     | -                     | -                                  |
+|  41 | Estonia                         | 90.0                  | 90.0                               |
+|  42 | Ethiopia                        | -                     | -                                  |
+|  43 | Faroe Islands (Denmark)         | -                     | -                                  |
+|  44 | Fiji                            | -                     | -                                  |
+|  45 | Finland                         | 80.0                  | 80.0                               |
+|  46 | France                          | 110.0                 | 130.0                              |
+|  47 | Georgia                         | 60.0                  | 80.0                               |
+|  48 | Germany                         | 80.0                  | 80.0                               |
+|  49 | Gibraltar (UK)                  | -                     | -                                  |
+|  50 | Greece                          | 80.0                  | 80.0                               |
+|  51 | Greenland (Denmark)             | -                     | -                                  |
+|  52 | Guernsey                        | -                     | 56.0                               |
+|  53 | Guyana                          | -                     | -                                  |
+|  54 | Haiti                           | -                     | -                                  |
+|  55 | Honduras                        | -                     | -                                  |
+|  56 | Hong Kong                       | 70.0                  | 70.0                               |
+|  57 | Hungary                         | 70.0                  | 80.0                               |
+|  58 | Iceland                         | 80.0                  | 80.0                               |
+|  59 | India                           | 65.0                  | 50.0                               |
+|  60 | Indonesia                       | 80.0                  | 80.0                               |
+|  61 | Iran                            | 110.0                 | 110.0                              |
+|  62 | Iraq                            | 90.0                  | 120.0                              |
+|  63 | Ireland                         | 90.0                  | 100.0                              |
+|  64 | Isle of Man                     | -                     | -                                  |
+|  65 | Israel                          | 80.0                  | 90.0                               |
+|  66 | Italy                           | 70.0                  | 80.0                               |
+|  67 | Jamaica                         | -                     | -                                  |
+|  68 | Japan                           | 80.0                  | 80.0                               |
+|  69 | Jersey                          | -                     | 64.0                               |
+|  70 | Kazakhstan                      | -                     | -                                  |
+|  71 | Kiribati                        | 30.0                  | 30.0                               |
+|  72 | Kosovo                          | -                     | -                                  |
+|  73 | Kuwait                          | 100.0                 | 120.0                              |
+|  74 | Kyrgyzstan                      | 70.0                  | 90.0                               |
+|  75 | Laos                            | 90.0                  | 100.0                              |
+|  76 | Latvia                          | 80.0                  | 90.0                               |
+|  77 | Lebanon                         | -                     | -                                  |
+|  78 | Liberia                         | -                     | -                                  |
+|  79 | Liechtenstein                   | 80.0                  | -                                  |
+|  80 | Lithuania                       | 90.0                  | 90.0                               |
+|  81 | Luxembourg                      | 90.0                  | 90.0                               |
+|  82 | Libya                           | -                     | -                                  |
+|  83 | Macau                           | -                     | -                                  |
+|  84 | North Macedonia                 | 100.0                 | -                                  |
+|  85 | Malawi                          | -                     | 80.0                               |
+|  86 | Malaysia                        | 70.0                  | 90.0                               |
+|  87 | Mali                            | -                     | -                                  |
+|  88 | Malta                           | 60.0                  | -                                  |
+|  89 | Mauritius                       | -                     | -                                  |
+|  90 | Moldova                         | 70.0                  | -                                  |
+|  91 | Morocco                         | -                     | 100.0                              |
+|  92 | Monaco                          | -                     | -                                  |
+|  93 | Mongolia                        | -                     | -                                  |
+|  94 | Montenegro                      | -                     | -                                  |
+|  95 | Mexico                          | 95.0                  | -                                  |
+|  96 | Namibia                         | -                     | -                                  |
+|  97 | Micronesia                      | -                     | -                                  |
+|  98 | Nepal                           | -                     | 110.0                              |
+|  99 | Netherlands                     | -                     | -                                  |
+| 100 | New Caledonia                   | -                     | -                                  |
+| 101 | New Zealand                     | 90.0                  | 90.0                               |
+| 102 | Niue                            | -                     | -                                  |
+| 103 | Nicaragua                       | -                     | -                                  |
+| 104 | Nigeria                         | -                     | -                                  |
+| 105 | Norfolk Island                  | -                     | 50.0                               |
+| 106 | North Korea                     | -                     | -                                  |
+| 107 | Norway                          | 80.0                  | 80.0                               |
+| 108 | Oman                            | 80.0                  | -                                  |
+| 109 | Palestine                       | 60.0                  | 60.0                               |
+| 110 | Panama                          | -                     | 100.0                              |
+| 111 | Papua New Guinea                | -                     | -                                  |
+| 112 | Pakistan                        | 80.0                  | 110.0                              |
+| 113 | Peru                            | 90.0                  | 100.0                              |
+| 114 | Philippines                     | 80.0                  | 60.0                               |
+| 115 | Poland                          | 70.0                  | 80.0                               |
+| 116 | Portugal                        | 80.0                  | 100.0                              |
+| 117 | Qatar                           | -                     | -                                  |
+| 118 | Romania                         | 90.0                  | 90.0                               |
+| 119 | Russia                          | 90.0                  | 90.0                               |
+| 120 | Samoa                           | -                     | -                                  |
+| 121 | San Marino                      | -                     | -                                  |
+| 122 | Serbia                          | 70.0                  | 80.0                               |
+| 123 | Singapore                       | 60.0                  | 60.0                               |
+| 124 | Slovakia                        | 90.0                  | 90.0                               |
+| 125 | Slovenia                        | 80.0                  | 80.0                               |
+| 126 | Saudi Arabia                    | 60.0                  | 100.0                              |
+| 127 | Somalia                         | 80.0                  | 100.0                              |
+| 128 | South Africa                    | 60.0                  | 80.0                               |
+| 129 | South Korea (Republic of Korea) | 60.0                  | 80.0                               |
+| 130 | Spain                           | 80.0                  | 90.0                               |
+| 131 | Sri Lanka                       | 40.0                  | 70.0                               |
+| 132 | Sudan                           | -                     | -                                  |
+| 133 | Suriname                        | -                     | 80.0                               |
+| 134 | Sweden                          | 90.0                  | 80.0                               |
+| 135 | Switzerland                     | 80.0                  | 80.0                               |
+| 136 | Taiwan (Republic of China)      | 80.0                  | 90.0                               |
+| 137 | Tanzania                        | 100.0                 | -                                  |
+| 138 | Thailand                        | 80.0                  | 100.0                              |
+| 139 | Trinidad and Tobago             | 50.0                  | 65.0                               |
+| 140 | Tunisia                         | -                     | -                                  |
+| 141 | Turkey                          | 80.0                  | 90.0                               |
+| 142 | Turkmenistan                    | -                     | -                                  |
+| 143 | Uganda                          | -                     | -                                  |
+| 144 | Ukraine                         | 90.0                  | 80.0                               |
+| 145 | United Arab Emirates            | 80.0                  | 80.0                               |
+| 146 | United Kingdom                  | 97.0                  | 113.0                              |
+| 147 | United States                   | -                     | 129.0                              |
+| 148 | Uruguay                         | -                     | -                                  |
+| 149 | Uzbekistan                      | 70.0                  | 90.0                               |
+| 150 | Vanuatu                         | -                     | -                                  |
+| 151 | Vatican                         | -                     | -                                  |
+| 152 | Venezuela                       | 60.0                  | 120.0                              |
+| 153 | Vietnam                         | 70.0                  | 70.0                               |
+| 154 | Yemen                           | -                     | -                                  |
+| 155 | Zambia                          | 75.0                  | 70.0                               |
+| 156 | Zimbabwe                        | 80.0                  | 80.0                               |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize">
+<h2><span class="section-number">25.5. </span>Visualize<a class="headerlink" href="#visualize" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="n">vis_col</span> <span class="o">=</span> <span class="s2">&quot;trucks_and_trailers&quot;</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;country&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">vis_col</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df_trucks</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">vis_col</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">vis_col</span><span class="p">]),</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Speed Limits for Trucks and Trailers&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Speed Limits for Trucks and Trailers&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/road-speed-limits-by-countries_50_1.png" src="../../../_images/road-speed-limits-by-countries_50_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="n">vis_col</span> <span class="o">=</span> <span class="s2">&quot;trucks_and_trailers_non_built_up&quot;</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;country&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">vis_col</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df_trucks</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">vis_col</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">vis_col</span><span class="p">]),</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+
+<span class="c1">#Trucks, or automobiles with trailer, outside built-up areas/highways</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Speed Limits for Trucks and Trailers outside Built-up Areas &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Speed Limits for Trucks and Trailers outside Built-up Areas &#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/road-speed-limits-by-countries_51_1.png" src="../../../_images/road-speed-limits-by-countries_51_1.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/economics/road_freight"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="road_freight_history.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">21. </span>Road/Rail Freight</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../statistics/box-cox-transformation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">26. </span>Box-Cox Transformation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By LM<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
