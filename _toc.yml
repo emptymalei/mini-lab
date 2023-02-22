@@ -26,6 +26,9 @@ parts:
     - file: notebooks/statistics/confidence-interval
     - file: notebooks/statistics/correlations
     - file: notebooks/visualization/anscombes-quartet
+    - file: notebooks/statistics/anova
+    - file: notebooks/statistics/kl-divergence
+    - file: notebooks/statistics/ttest
   - caption: Graph
     numbered: True
     chapters:
