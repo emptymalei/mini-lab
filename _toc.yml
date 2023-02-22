@@ -24,6 +24,12 @@ parts:
     - file: notebooks/economics/road_freight/ocean-freight-infra
     - file: notebooks/economics/road_freight/road_freight_history
     - file: notebooks/economics/road_freight/road-speed-limits-by-countries
+  - caption: Data Acquisition
+    numbered: True
+    chapters:
+    - file: notebooks/data_acquisition/orgasmsoundlibrary/play-with-data
+    - file: notebooks/data_acquisition/insiprehep/inspirehep-api
+    - file: notebooks/data_acquisition/airbnb/pretest
   - caption: Statistics
     numbered: True
     chapters:
@@ -57,8 +63,12 @@ parts:
   - caption: Economics
     numbered: True
     chapters:
-    - file: notebooks/economics/supply-demand.ipynb
+    - file: notebooks/economics/supply-demand
   - caption: Interplanetary Immigration Center
     numbered: True
     chapters:
     - file: notebooks/mars_base_locations/base_locations
+  - caption: MISC
+    numbered: True
+    chapters:
+    - file: notebooks/fun/bilibili-data-analysis
