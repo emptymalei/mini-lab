@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>63. Basics of PyTorch &#8212; LM Mini Lab</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="64. Neural Networks" href="neural-networks-with-torch.html" />
+    <link rel="prev" title="62. PyTorch Simple Demo" href="pytorch_demo.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/chemisch.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">LM Mini Lab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Mini Lab
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fun/cologne-xkcd.html">
+   1. Colors in Cologne
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fun/experiments-in-biology.html">
+   2. Experiments in Biology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../social/women-at-work.html">
+   3. Work, Men, Women
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_imputation/holidays.html">
+   4. Dealing with Holidays in Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_management/datapackage_demo.html">
+   5. Demo for datapackage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../scientist_names/scientist_names.html">
+   6. Scientist Names
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../space_exploration/space-exploration.html">
+   7. Space Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/airplane/visualizing-airtraffic.html">
+   8. Flight Routes in USA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../economics/road_freight/airfreight-infra.html">
+   9. Air Freight Infrastructure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../economics/road_freight/european-road-freight.html">
+   10. Road Freight in EU
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../economics/road_freight/eurostats_modal_split.html">
+   16. Modal Split in Transportation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../economics/road_freight/ocean-freight-infra.html">
+   20. Ocean Freight Infra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../economics/road_freight/road_freight_history.html">
+   21. Road/Rail Freight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../economics/road_freight/road-speed-limits-by-countries.html">
+   25. Road Speed Limits by Countries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/us/state-rank-mckinsey/rank-data.html">
+   26. US State Ranking
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_acquisition/orgasmsoundlibrary/play-with-data.html">
+   27. Download OrgasmSoundLibrary data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_acquisition/insiprehep/inspirehep-api.html">
+   30. inspirehep API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_acquisition/airbnb/pretest.html">
+   31. Airbnb Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/box-cox-transformation.html">
+   36. Box-Cox Transformation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/centering-matrix.html">
+   37. Centering Matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/confidence-interval.html">
+   38. Error Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/correlations.html">
+   40. Correlations in Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/anscombes-quartet.html">
+   41. Anscombes Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/anova.html">
+   42. ANOVA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/kl-divergence.html">
+   43. KL Divergence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistics/ttest.html">
+   45. TTest
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Graph
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/graph-cuts.html">
+   47. Graph Cuts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/graph-laplacian.html">
+   48. Graph Laplacian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/graph-node-statistics.html">
+   49. Node Statistics on Graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph/traditional-graph-generation.html">
+   51. Some Interesting Graphs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Visualizations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/matplotlib_multilanguages.html">
+   53. Multilanguages Font
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pytorch_tricks.html">
+   54. Some Simple PyTorch Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../decision_tree/decision_tree_example.html">
+   55. Generate Fake Data for WFH Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../random_forest/random_forest_benchmark.html">
+   56. Random Forest Playground
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logistic_regression/logistic_regression_basics.html">
+   59. Logistic Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vc_dimension/growth_function.html">
+   60. Growth Function and VC Dimension
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pytorch_variables-and-autograd.html">
+   61. Autograd
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pytorch_demo.html">
+   62. PyTorch Simple Demo
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   63. Basics of PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural-networks-with-torch.html">
+   64. Neural Networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Time Series
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logistics/air_freight_time_series_data.html">
+   66. Air Freight Time Series Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Audio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../audo/audio-processing.html">
+   67. Audio Signal Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../audo/geodata.html">
+   68. Time Series Geodata
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../audo/orgasm-data-preprocessing.html">
+   69. Preprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Economics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../economics/supply-demand.html">
+   72. Supply and Demand
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Interplanetary Immigration Center
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mars_base_locations/base_locations.html">
+   73. Mars Base Locations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MISC
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fun/bilibili-data-analysis.html">
+   74. Data Analysis for BiliDash
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tricks-in-pandas-1.html">
+   75. Tricks about Pandas 1
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/emptymalei/mini-lab/master?urlpath=tree/notebooks/notebooks/basics/pytorch_basics.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab/issues/new?title=Issue%20on%20page%20%2Fnotebooks/basics/pytorch_basics.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notebooks/basics/pytorch_basics.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Basics of PyTorch</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="basics-of-pytorch">
+<h1><span class="section-number">63. </span>Basics of PyTorch<a class="headerlink" href="#basics-of-pytorch" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tensors can be created using <code class="docutils literal notranslate"><span class="pre">torch.Tensor(row,</span> <span class="pre">col)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">col</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tensor_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_1</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-3.6478e-06,  3.0798e-41],
+        [-8.5323e+04, -8.0050e+13],
+        [-8.8348e-27,  4.5722e-41]])
+torch.Size([3, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<p>It’s also useful to have random matrices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.5993, 0.4500],
+        [0.2913, 0.8813],
+        [0.2133, 0.2016]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Addition</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensor_rand_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
+<span class="n">tensor_rand_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_rand_1</span><span class="p">,</span><span class="n">tensor_rand_2</span><span class="p">,</span> <span class="n">tensor_rand_1</span><span class="o">+</span><span class="n">tensor_rand_2</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tensor_rand_1</span><span class="p">,</span> <span class="n">tensor_rand_2</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.5310, 0.2751],
+        [0.6832, 0.3364],
+        [0.0673, 0.7318]]) tensor([[0.9787, 0.8324],
+        [0.4656, 0.0911],
+        [0.0932, 0.6841]]) tensor([[1.5097, 1.1075],
+        [1.1488, 0.4275],
+        [0.1605, 1.4159]]) tensor([[1.5097, 1.1075],
+        [1.1488, 0.4275],
+        [0.1605, 1.4159]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">torch.and()</span></code> function can take argument and assign the results to a specific tensor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensor_rand_1p2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_rand_1p2</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tensor_rand_1</span><span class="p">,</span> <span class="n">tensor_rand_2</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">tensor_rand_1p2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_rand_1p2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-8.6373e-01,  4.5722e-41],
+        [-5.6742e-06,  3.0798e-41],
+        [ 4.4842e-44,  0.0000e+00]])
+tensor([[1.5097, 1.1075],
+        [1.1488, 0.4275],
+        [0.1605, 1.4159]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tensors have member function <code class="docutils literal notranslate"><span class="pre">add_()</span></code>. This <code class="docutils literal notranslate"><span class="pre">_</span></code> indicates that the tensor itself will be mutated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensor_2</span> <span class="o">=</span> <span class="p">(</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span> <span class="c1"># initialize the tensor to be zeros</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_2</span><span class="p">)</span>
+<span class="n">tensor_2</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">tensor_1</span><span class="p">);</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0., 0.],
+        [0., 0.],
+        [0., 0.]])
+tensor([[-3.6478e-06,  3.0798e-41],
+        [-8.5323e+04, -8.0050e+13],
+        [-8.8348e-27,  4.5722e-41]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Slicing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensor_2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(-8.0050e+13)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reshape the tensor using <code class="docutils literal notranslate"><span class="pre">.view()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">tensor_2</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">row</span><span class="o">*</span><span class="n">col</span><span class="p">),</span> <span class="n">tensor_2</span><span class="o">.</span><span class="n">view</span><span class="p">(</span> <span class="n">col</span><span class="p">,</span><span class="n">row</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-3.6478e-06,  3.0798e-41, -8.5323e+04, -8.0050e+13, -8.8348e-27,
+         4.5722e-41]) tensor([[-3.6478e-06,  3.0798e-41, -8.5323e+04],
+        [-8.0050e+13, -8.8348e-27,  4.5722e-41]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create ones and zeros</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1., 1.],
+        [1., 1.],
+        [1., 1.]]) tensor([[0., 0.],
+        [0., 0.],
+        [0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tensors can be converted to numpy arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">tensor_2</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">tensor_2</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-3.6478e-06,  3.0798e-41],
+        [-8.5323e+04, -8.0050e+13],
+        [-8.8348e-27,  4.5722e-41]])
+[[-3.6478232e-06  3.0797738e-41]
+ [-8.5323328e+04 -8.0049735e+13]
+ [-8.8347861e-27  4.5721566e-41]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Numpy array can be converted to tensors</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np_arr_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np_arr_1</span><span class="p">)</span>
+<span class="n">tensor_from_np_arr_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span> <span class="n">np_arr_1</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensor_from_np_arr_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 1.]
+ [1. 1.]
+ [1. 1.]]
+tensor([[1., 1.],
+        [1., 1.],
+        [1., 1.]], dtype=torch.float64)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="pytorch_demo.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">62. </span>PyTorch Simple Demo</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="neural-networks-with-torch.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">64. </span>Neural Networks</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By LM<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
