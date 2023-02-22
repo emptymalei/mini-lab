@@ -1,0 +1,2631 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>30. Airbnb Data &#8212; LM Mini Lab</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="35. Box-Cox Transformation" href="../../statistics/box-cox-transformation.html" />
+    <link rel="prev" title="29. inspirehep API" href="../insiprehep/inspirehep-api.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/chemisch.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">LM Mini Lab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Mini Lab
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fun/cologne-xkcd.html">
+   1. Colors in Cologne
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fun/experiments-in-biology.html">
+   2. Experiments in Biology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../social/women-at-work.html">
+   3. Work, Men, Women
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data_imputation/holidays.html">
+   4. Dealing with Holidays in Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data_management/datapackage_demo.html">
+   5. Demo for datapackage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientist_names/scientist_names.html">
+   6. Scientist Names
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../space_exploration/space-exploration.html">
+   7. Space Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../visualization/airplane/visualizing-airtraffic.html">
+   8. Flight Routes in USA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../economics/road_freight/airfreight-infra.html">
+   9. Air Freight Infrastructure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../economics/road_freight/european-road-freight.html">
+   10. Road Freight in EU
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../economics/road_freight/eurostats_modal_split.html">
+   16. Modal Split in Transportation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../economics/road_freight/ocean-freight-infra.html">
+   20. Ocean Freight Infra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../economics/road_freight/road_freight_history.html">
+   21. Road/Rail Freight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../economics/road_freight/road-speed-limits-by-countries.html">
+   25. Road Speed Limits by Countries
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orgasmsoundlibrary/play-with-data.html">
+   26. Download OrgasmSoundLibrary data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../insiprehep/inspirehep-api.html">
+   29. inspirehep API
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   30. Airbnb Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/box-cox-transformation.html">
+   35. Box-Cox Transformation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/centering-matrix.html">
+   36. Centering Matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/confidence-interval.html">
+   37. Error Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/correlations.html">
+   39. Correlations in Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../visualization/anscombes-quartet.html">
+   40. Anscombes Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/anova.html">
+   41. ANOVA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/kl-divergence.html">
+   42. KL Divergence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statistics/ttest.html">
+   44. TTest
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Graph
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-cuts.html">
+   46. Graph Cuts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-laplacian.html">
+   47. Graph Laplacian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/graph-node-statistics.html">
+   48. Node Statistics on Graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../graph/traditional-graph-generation.html">
+   50. Some Interesting Graphs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/pytorch_tricks.html">
+   52. Some Simple PyTorch Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../decision_tree/decision_tree_example.html">
+   53. Generate Fake Data for WFH Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../random_forest/random_forest_benchmark.html">
+   54. Random Forest Playground
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistic_regression/logistic_regression_basics.html">
+   57. Logistic Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../vc_dimension/growth_function.html">
+   58. Growth Function and VC Dimension
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Time Series
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistics/air_freight_time_series_data.html">
+   59. Air Freight Time Series Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Economics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../economics/supply-demand.html">
+   60. Supply and Demand
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Interplanetary Immigration Center
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mars_base_locations/base_locations.html">
+   61. Mars Base Locations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MISC
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fun/bilibili-data-analysis.html">
+   62. Data Analysis for BiliDash
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/emptymalei/mini-lab/master?urlpath=tree/notebooks/notebooks/data_acquisition/airbnb/pretest.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/emptymalei/mini-lab/issues/new?title=Issue%20on%20page%20%2Fnotebooks/data_acquisition/airbnb/pretest.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/notebooks/data_acquisition/airbnb/pretest.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   30. Airbnb Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key">
+   31. Key
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-api">
+   32. Explore API
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   33. Functions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#demo-scraping">
+   34. Demo Scraping
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Airbnb Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   30. Airbnb Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key">
+   31. Key
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-api">
+   32. Explore API
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   33. Functions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#demo-scraping">
+   34. Demo Scraping
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="airbnb-data">
+<h1><span class="section-number">30. </span>Airbnb Data<a class="headerlink" href="#airbnb-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">urllib3.exceptions</span> <span class="kn">import</span> <span class="n">ProtocolError</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.io.json</span> <span class="kn">import</span> <span class="n">json_normalize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib3.exceptions</span> <span class="kn">import</span> <span class="n">ProtocolError</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_base</span> <span class="o">=</span> <span class="s1">&#39;https://www.airbnb.com/api/v2/explore_tabs?version=1.3.8&amp;_format=for_explore_search_web&amp;experiences_per_grid=20&amp;items_per_grid=18&amp;guidebooks_per_grid=20&amp;auto_ib=true&amp;fetch_filters=true&amp;has_zero_guest_treatment=false&amp;is_guided_search=true&amp;is_new_cards_experiment=true&amp;luxury_pre_launch=false&amp;query_understanding_enabled=true&amp;show_groupings=true&amp;supports_for_you_v3=true&amp;timezone_offset=-360&amp;client_session_id=82674acc-b274-41dc-8b00-499d5c2fea44&amp;metadata_only=false&amp;is_standard_search=true&amp;refinement_paths%5B%5D=</span><span class="si">%2F</span><span class="s1">homes&amp;selected_tab_id=home_tab&amp;place_id=ChIJ5S-raZElv0cR8HcqSvxgJwQ&amp;allow_override%5B%5D=&amp;s_tag=kke9hwU1&amp;screen_size=medium&amp;query=Cologne%2C+Germany&amp;_intents=p1&#39;</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;&amp;key=d306zoyjsyarp7ifhu67rjxn52tv0t20&amp;currency=USD&amp;locale=en&#39;</span>
+<span class="n">api_section_offset</span> <span class="o">=</span> <span class="s1">&#39;&amp;section_offset=4&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">retry_lvl</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="key">
+<h1><span class="section-number">31. </span>Key<a class="headerlink" href="#key" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airbnb_home</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://airbnb.com&quot;</span><span class="p">)</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">airbnb_home</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+<span class="n">metatags</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;_bootstrap-layout-init&quot;</span><span class="p">)</span>
+<span class="n">metacontents</span> <span class="o">=</span> <span class="p">[</span><span class="n">metatag</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">metatag</span> <span class="ow">in</span> <span class="n">metatags</span><span class="p">]</span>
+
+<span class="n">metajson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">metacontents</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">metajson</span>
+
+<span class="n">api_key</span> <span class="o">=</span> <span class="n">metajson</span><span class="p">[</span><span class="s1">&#39;api_config&#39;</span><span class="p">][</span><span class="s1">&#39;key&#39;</span><span class="p">]</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;&amp;key=&#39;</span><span class="o">+</span><span class="n">api_key</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&amp;key=d306zoyjsyarp7ifhu67rjxn52tv0t20
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="explore-api">
+<h1><span class="section-number">32. </span>Explore API<a class="headerlink" href="#explore-api" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_base</span><span class="o">+</span><span class="n">api_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsp_json</span> <span class="o">=</span> <span class="n">rsp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">rsp_json</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsp_json</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;explore_tabs&#39;, &#39;metadata&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pagination_metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;has_next_page&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;items_offset&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="s2">&quot;section_offset&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;search_session_id&quot;</span><span class="p">:</span> <span class="s2">&quot;eee6b55b-100d-4314-800a-393bec147f25&quot;</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pagination_metadata&#39;</span><span class="p">][</span><span class="s1">&#39;has_next_page&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;home_tab_metadata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;urgency_commitment&#39;, &#39;golden_ticket_urgency_commitment&#39;, &#39;listing_cards_urgency_commitment_metadata&#39;, &#39;listing_cards_price_line_urgency_commitment_metadata&#39;, &#39;messages&#39;, &#39;facets&#39;, &#39;overrides&#39;, &#39;search_feed_items&#39;, &#39;remarketing_ids&#39;, &#39;location&#39;, &#39;breadcrumbs&#39;, &#39;listings_count&#39;, &#39;search&#39;, &#39;geography&#39;, &#39;price_histogram&#39;, &#39;filters&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;backend_search_id&#39;, &#39;display_type&#39;, &#39;experiments_metadata&#39;, &#39;result_type&#39;, &#39;search_session_id&#39;, &#39;section_id&#39;, &#39;section_type_uid&#39;, &#39;is_paginated&#39;, &#39;bankai_section_id&#39;, &#39;refinements&#39;, &#39;inserts&#39;, &#39;listings&#39;, &#39;review_items&#39;, &#39;breadcrumbs&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;listings&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;listings&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flatten_json</span><span class="p">(</span><span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;listings&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="functions">
+<h1><span class="section-number">33. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fields</span>
+
+<span class="n">listing_fields</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span>
+<span class="s1">&#39;bedrooms&#39;</span><span class="p">,</span>
+<span class="s1">&#39;beds&#39;</span><span class="p">,</span>
+<span class="s1">&#39;person_capacity&#39;</span><span class="p">,</span>
+<span class="c1"># &#39;host_languages&#39;,</span>
+<span class="s1">&#39;id&#39;</span><span class="p">,</span>
+<span class="s1">&#39;is_business_travel_ready&#39;</span><span class="p">,</span>
+<span class="s1">&#39;is_fully_refundable&#39;</span><span class="p">,</span>
+<span class="s1">&#39;is_host_highly_rated&#39;</span><span class="p">,</span>
+<span class="s1">&#39;is_rebookable&#39;</span><span class="p">,</span>
+<span class="s1">&#39;is_superhost&#39;</span><span class="p">,</span>
+<span class="s1">&#39;lat&#39;</span><span class="p">,</span>
+<span class="s1">&#39;lng&#39;</span><span class="p">,</span>
+<span class="s1">&#39;picture_count&#39;</span><span class="p">,</span>
+<span class="s1">&#39;preview_amenities&#39;</span><span class="p">,</span>
+<span class="s1">&#39;reviews_count&#39;</span><span class="p">,</span>
+<span class="s1">&#39;star_rating&#39;</span><span class="p">,</span>
+<span class="s1">&#39;tier_id&#39;</span>
+<span class="p">]</span>
+
+<span class="n">pricing_quote_rate_with_service_fee_fields</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s1">&#39;amount&#39;</span><span class="p">,</span>
+<span class="s1">&#39;currency&#39;</span>
+<span class="p">]</span>
+
+<span class="n">fields_default</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;listing_&#39;</span><span class="o">+</span> <span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">listing_fields</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;pricing_quote_rate_with_service_fee_&#39;</span><span class="o">+</span><span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">pricing_quote_rate_with_service_fee_fields</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;pricing_quote_rate_type&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fields_default</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;listing_bathrooms&#39;,
+ &#39;listing_bedrooms&#39;,
+ &#39;listing_beds&#39;,
+ &#39;listing_person_capacity&#39;,
+ &#39;listing_id&#39;,
+ &#39;listing_is_business_travel_ready&#39;,
+ &#39;listing_is_fully_refundable&#39;,
+ &#39;listing_is_host_highly_rated&#39;,
+ &#39;listing_is_rebookable&#39;,
+ &#39;listing_is_superhost&#39;,
+ &#39;listing_lat&#39;,
+ &#39;listing_lng&#39;,
+ &#39;listing_picture_count&#39;,
+ &#39;listing_preview_amenities&#39;,
+ &#39;listing_reviews_count&#39;,
+ &#39;listing_star_rating&#39;,
+ &#39;listing_tier_id&#39;,
+ &#39;pricing_quote_rate_with_service_fee_amount&#39;,
+ &#39;pricing_quote_rate_with_service_fee_currency&#39;,
+ &#39;pricing_quote_rate_type&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listing_parser</span><span class="p">(</span><span class="n">listing</span><span class="p">,</span> <span class="n">fields</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">fields</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;listing_bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_bedrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_beds&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_person_capacity&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_host_languages&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_id&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_business_travel_ready&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_fully_refundable&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_host_highly_rated&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_rebookable&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_superhost&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_lat&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_lng&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_picture_count&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_preview_amenities&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_reviews_count&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_star_rating&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_tier_id&#39;</span><span class="p">,</span> <span class="s1">&#39;pricing_quote_rate_with_service_fee_amount&#39;</span><span class="p">,</span> <span class="s1">&#39;pricing_quote_rate_with_service_fee_currency&#39;</span><span class="p">,</span> <span class="s1">&#39;pricing_quote_rate_type&#39;</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">listing</span><span class="p">)[</span><span class="n">fields_default</span><span class="p">]</span>
+
+        
+    
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">next_indicator</span><span class="p">(</span><span class="n">response_json</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pagination_metadata&#39;</span><span class="p">][</span><span class="s1">&#39;has_next_page&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">flatten_json</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">name</span> <span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">flatten</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="n">flatten</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="demo-scraping">
+<h1><span class="section-number">34. </span>Demo Scraping<a class="headerlink" href="#demo-scraping" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">next_sec</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">sec_off</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">rsp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_base</span><span class="o">+</span><span class="n">api_key</span><span class="o">+</span><span class="s1">&#39;&amp;section_offset=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sec_off</span><span class="p">))</span>
+<span class="n">rsp_json</span> <span class="o">=</span> <span class="n">rsp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">listing_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">flatten_json</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;listings&#39;</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">df_total</span> <span class="o">=</span> <span class="n">listing_parser</span><span class="p">(</span><span class="n">listing_array</span><span class="p">)</span>
+
+<span class="n">df_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_total</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+
+<span class="n">next_sec</span> <span class="o">=</span> <span class="n">next_indicator</span><span class="p">(</span><span class="n">rsp_json</span><span class="p">)</span>
+
+<span class="n">sec_off</span> <span class="o">=</span> <span class="n">sec_off</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">next_sec</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    
+    <span class="n">try_flag</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="kc">True</span> <span class="ow">and</span> <span class="p">(</span><span class="n">try_flag</span> <span class="o">&lt;</span> <span class="n">retry_lvl</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+                <span class="n">rsp</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_base</span><span class="o">+</span><span class="n">api_key</span><span class="o">+</span><span class="s1">&#39;&amp;section_offset=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">sec_off</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;request error&#39;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+            <span class="n">try_flag</span> <span class="o">=</span> <span class="n">try_flag</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="n">try_flag</span> <span class="o">*</span> <span class="n">retry_lvl</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="n">rsp_json</span> <span class="o">=</span> <span class="n">rsp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    
+
+    <span class="n">listing_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">flatten_json</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;listings&#39;</span><span class="p">]</span> <span class="p">]</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">listing_parser</span><span class="p">(</span><span class="n">listing_array</span><span class="p">)</span>
+    <span class="n">df_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_total</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+    
+    <span class="n">sec_off</span> <span class="o">=</span> <span class="n">sec_off</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="n">next_sec</span> <span class="o">=</span> <span class="n">next_indicator</span><span class="p">(</span><span class="n">rsp_json</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-254-21197f9853a9&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="n">listing_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">flatten_json</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rsp_json</span><span class="p">[</span><span class="s1">&#39;explore_tabs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;listings&#39;</span><span class="p">]</span> <span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> 
+<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">listing_parser</span><span class="p">(</span><span class="n">listing_array</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">df_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_total</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> 
+
+<span class="nn">&lt;ipython-input-217-392cc902e153&gt;</span> in <span class="ni">listing_parser</span><span class="nt">(listing, fields)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;listing_bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_bedrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_beds&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_person_capacity&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_host_languages&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_id&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_business_travel_ready&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_fully_refundable&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_host_highly_rated&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_rebookable&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_is_superhost&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_lat&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_lng&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_picture_count&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_preview_amenities&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_reviews_count&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_star_rating&#39;</span><span class="p">,</span> <span class="s1">&#39;listing_tier_id&#39;</span><span class="p">,</span> <span class="s1">&#39;pricing_quote_rate_with_service_fee_amount&#39;</span><span class="p">,</span> <span class="s1">&#39;pricing_quote_rate_with_service_fee_currency&#39;</span><span class="p">,</span> <span class="s1">&#39;pricing_quote_rate_type&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">listing</span><span class="p">)[</span><span class="n">fields_default</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+
+<span class="nn">~/anaconda/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2131</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">Series</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Index</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2132</span>             <span class="c1"># either boolean or fancy integer index</span>
+<span class="ne">-&gt; </span><span class="mi">2133</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_array</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2134</span>         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2135</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_frame</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="nn">~/anaconda/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">_getitem_array</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2175</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">convert</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2176</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2177</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="o">.</span><span class="n">_convert_to_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2178</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">convert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2179</span> 
+
+<span class="nn">~/anaconda/lib/python3.6/site-packages/pandas/core/indexing.py</span> in <span class="ni">_convert_to_indexer</span><span class="nt">(self, obj, axis, is_setter)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1267</span>                 <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">1268</span>                     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{mask}</span><span class="s1"> not in index&#39;</span>
+<span class="ne">-&gt; </span><span class="mi">1269</span>                                    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mask</span><span class="o">=</span><span class="n">objarr</span><span class="p">[</span><span class="n">mask</span><span class="p">]))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1270</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1271</span>                 <span class="k">return</span> <span class="n">_values_from_object</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &quot;[&#39;listing_lat&#39; &#39;listing_lng&#39;] not in index&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_total</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>listing_bathrooms</th>
+      <th>listing_bedrooms</th>
+      <th>listing_beds</th>
+      <th>listing_person_capacity</th>
+      <th>listing_id</th>
+      <th>listing_is_business_travel_ready</th>
+      <th>listing_is_fully_refundable</th>
+      <th>listing_is_host_highly_rated</th>
+      <th>listing_is_rebookable</th>
+      <th>listing_is_superhost</th>
+      <th>listing_lat</th>
+      <th>listing_lng</th>
+      <th>listing_picture_count</th>
+      <th>listing_preview_amenities</th>
+      <th>listing_reviews_count</th>
+      <th>listing_star_rating</th>
+      <th>listing_tier_id</th>
+      <th>pricing_quote_rate_with_service_fee_amount</th>
+      <th>pricing_quote_rate_with_service_fee_currency</th>
+      <th>pricing_quote_rate_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2787889</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.941302</td>
+      <td>6.936276</td>
+      <td>24</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>165</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>76.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>24889964</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.932664</td>
+      <td>6.959956</td>
+      <td>9</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>37.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>23365913</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.921521</td>
+      <td>6.933439</td>
+      <td>12</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>36</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>44.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>277516</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.948113</td>
+      <td>6.950925</td>
+      <td>19</td>
+      <td>Kitchen</td>
+      <td>69</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>70.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>6</td>
+      <td>151877</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.918680</td>
+      <td>6.962310</td>
+      <td>34</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>197</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>96.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>10851686</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.918086</td>
+      <td>6.961938</td>
+      <td>6</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>65</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>37.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>18425009</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.951706</td>
+      <td>6.956479</td>
+      <td>60</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>57</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>58.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>21246774</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.938014</td>
+      <td>6.941539</td>
+      <td>14</td>
+      <td>Wifi, Hair dryer</td>
+      <td>58</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>82.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>10612377</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.941124</td>
+      <td>6.999401</td>
+      <td>15</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>74</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>26.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>23447819</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.934467</td>
+      <td>6.973998</td>
+      <td>5</td>
+      <td></td>
+      <td>36</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>18263865</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.929644</td>
+      <td>6.942007</td>
+      <td>2</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>75</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>34.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>13881993</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.941947</td>
+      <td>6.941310</td>
+      <td>38</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>68</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>72.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1.5</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4974414</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.927488</td>
+      <td>6.955648</td>
+      <td>28</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>147</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>67.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>15740991</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.934543</td>
+      <td>6.945216</td>
+      <td>7</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>66</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>7</td>
+      <td>22464711</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.930502</td>
+      <td>6.981885</td>
+      <td>38</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>46</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>22.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3291488</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.925255</td>
+      <td>6.928739</td>
+      <td>10</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>66</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>5939146</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.939653</td>
+      <td>7.000305</td>
+      <td>5</td>
+      <td>Wifi</td>
+      <td>63</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>40.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>21429877</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.908204</td>
+      <td>6.924854</td>
+      <td>7</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>28</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2787889</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.941302</td>
+      <td>6.936276</td>
+      <td>24</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>165</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>76.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>24889964</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.932664</td>
+      <td>6.959956</td>
+      <td>9</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>37.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>23365913</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.921521</td>
+      <td>6.933439</td>
+      <td>12</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>36</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>44.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>277516</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.948113</td>
+      <td>6.950925</td>
+      <td>19</td>
+      <td>Kitchen</td>
+      <td>69</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>70.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>6</td>
+      <td>151877</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.918680</td>
+      <td>6.962310</td>
+      <td>34</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>197</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>96.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>10851686</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.918086</td>
+      <td>6.961938</td>
+      <td>6</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>65</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>37.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>18425009</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.951706</td>
+      <td>6.956479</td>
+      <td>60</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>57</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>58.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>21246774</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.938014</td>
+      <td>6.941539</td>
+      <td>14</td>
+      <td>Wifi, Hair dryer</td>
+      <td>58</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>82.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>10612377</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.941124</td>
+      <td>6.999401</td>
+      <td>15</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>74</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>26.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>23447819</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.934467</td>
+      <td>6.973998</td>
+      <td>5</td>
+      <td></td>
+      <td>36</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>18263865</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.929644</td>
+      <td>6.942007</td>
+      <td>2</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>75</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>34.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>13881993</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.941947</td>
+      <td>6.941310</td>
+      <td>38</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>68</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>72.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>22780131</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.933009</td>
+      <td>6.950762</td>
+      <td>10</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>42</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>16669399</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.953993</td>
+      <td>6.952722</td>
+      <td>5</td>
+      <td>Wifi, Hair dryer, Laptop friendly workspace</td>
+      <td>151</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>23.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2434296</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.949020</td>
+      <td>6.961224</td>
+      <td>23</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>250</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>58.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>611898</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.928164</td>
+      <td>6.943894</td>
+      <td>8</td>
+      <td>Wifi, Hair dryer</td>
+      <td>191</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>25.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>5</td>
+      <td>21360894</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.932803</td>
+      <td>7.001185</td>
+      <td>17</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>70</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>23.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>15441038</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.948075</td>
+      <td>6.951266</td>
+      <td>21</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>101</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>58.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>173230</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.949734</td>
+      <td>6.960503</td>
+      <td>24</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>299</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>62.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+      <td>1050191</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.930537</td>
+      <td>6.938651</td>
+      <td>17</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>269</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>22107173</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.939449</td>
+      <td>6.936492</td>
+      <td>15</td>
+      <td>Wifi, Kitchen, Hair dryer</td>
+      <td>69</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>53.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>13821383</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.921376</td>
+      <td>6.951496</td>
+      <td>6</td>
+      <td>Wifi, Kitchen</td>
+      <td>264</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>53.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>17401432</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.911821</td>
+      <td>6.943862</td>
+      <td>25</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>166</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>30.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.0</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+      <td>571118</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.935100</td>
+      <td>6.863792</td>
+      <td>55</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>305</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>32.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1455896</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.933412</td>
+      <td>6.932869</td>
+      <td>15</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>350</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>50.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>7977357</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.931095</td>
+      <td>6.934439</td>
+      <td>22</td>
+      <td>Wifi, Kitchen, Hair dryer</td>
+      <td>289</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>29.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3452377</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.920560</td>
+      <td>6.911326</td>
+      <td>21</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>232</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>41.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>19353511</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.921005</td>
+      <td>6.962108</td>
+      <td>18</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>89</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>46.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4534029</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.948891</td>
+      <td>6.955226</td>
+      <td>11</td>
+      <td>Wifi</td>
+      <td>193</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>46.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4562588</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.949547</td>
+      <td>6.924072</td>
+      <td>11</td>
+      <td>Wifi, Kitchen, Hair dryer</td>
+      <td>270</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>42.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>173230</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.949734</td>
+      <td>6.960503</td>
+      <td>24</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>299</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>62.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+      <td>1050191</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.930537</td>
+      <td>6.938651</td>
+      <td>17</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>269</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>35.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>22107173</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.939449</td>
+      <td>6.936492</td>
+      <td>15</td>
+      <td>Wifi, Kitchen, Hair dryer</td>
+      <td>69</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>53.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>13821383</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.921376</td>
+      <td>6.951496</td>
+      <td>6</td>
+      <td>Wifi, Kitchen</td>
+      <td>264</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>53.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>17401432</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.911821</td>
+      <td>6.943862</td>
+      <td>25</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>166</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>30.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.0</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+      <td>571118</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.935100</td>
+      <td>6.863792</td>
+      <td>55</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>305</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>32.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1455896</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.933412</td>
+      <td>6.932869</td>
+      <td>15</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>350</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>50.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>7977357</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.931095</td>
+      <td>6.934439</td>
+      <td>22</td>
+      <td>Wifi, Kitchen, Hair dryer</td>
+      <td>289</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>29.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3452377</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.920560</td>
+      <td>6.911326</td>
+      <td>21</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>232</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>41.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>19353511</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.921005</td>
+      <td>6.962108</td>
+      <td>18</td>
+      <td>Wifi, Kitchen, Hair dryer, Laptop friendly wor...</td>
+      <td>89</td>
+      <td>5.0</td>
+      <td>0</td>
+      <td>46.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4534029</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>50.948891</td>
+      <td>6.955226</td>
+      <td>11</td>
+      <td>Wifi</td>
+      <td>193</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>46.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4562588</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>50.949547</td>
+      <td>6.924072</td>
+      <td>11</td>
+      <td>Wifi, Kitchen, Hair dryer</td>
+      <td>270</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>42.0</td>
+      <td>USD</td>
+      <td>nightly</td>
+    </tr>
+  </tbody>
+</table>
+<p>9060 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_total</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/cologne.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/data_acquisition/airbnb"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../insiprehep/inspirehep-api.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">29. </span>inspirehep API</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../statistics/box-cox-transformation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">35. </span>Box-Cox Transformation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By LM<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
