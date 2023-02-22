@@ -1,0 +1,103 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3139,         95]
+NotebookOptionsPosition[      2394,         73]
+NotebookOutlinePosition[      2751,         89]
+CellTagsIndexPosition[      2708,         86]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"data", " ", "=", " ", 
+  RowBox[{"WikipediaData", "[", 
+   RowBox[{
+   "\"\<List_of_U.S._states_and_territories_by_population\>\"", ",", 
+    "\"\<State_information\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.72900502284871*^9, 3.7290050257996063`*^9}, {
+  3.72900507257557*^9, 3.729005094490347*^9}, {3.729005131490736*^9, 
+  3.7290051337651176`*^9}},ExpressionUUID->"f239ed28-71e0-408a-ba86-\
+8f448db41f10"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "WikipediaData","invinpm",
+   "\"\\!\\(\\*RowBox[{\\\"\\\\\\\"List_of_U.S._states_and_territories_by_\
+population, State_information\\\\\\\"\\\"}]\\) are not valid inputs.\"",2,3,1,
+   26702880759222666870,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7290051344235153`*^9},ExpressionUUID->"5e3cd6a0-b686-416d-8cac-\
+22481b589189"],
+
+Cell[BoxData[
+ RowBox[{"WikipediaData", "[", 
+  RowBox[{"\<\"List_of_U.S._states_and_territories_by_population\"\>", 
+   ",", "\<\"State_information\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.729005033087021*^9, 3.729005095397479*^9, 
+  3.729005134576305*^9},ExpressionUUID->"9a1bb1ab-13a1-4fc3-94bc-\
+be7b257d66e9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"WolframLanguageData", "[", "\"\<USPopulation\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.729005418355394*^9, 3.729005423064769*^9}, {
+  3.7290054858223877`*^9, 
+  3.7290054991164713`*^9}},ExpressionUUID->"2b91f08f-878b-41b8-9803-\
+f196889a075a"],
+
+Cell[BoxData[
+ RowBox[{"Missing", "[", 
+  RowBox[{"\<\"UnknownEntity\"\>", ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"WolframLanguageSymbol\"\>", ",", "\<\"USPopulation\"\>"}], 
+    "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.7290054953080606`*^9, 
+  3.729005499699007*^9}},ExpressionUUID->"dd6b0fee-759b-441d-b00c-\
+71fdd5ff0087"]
+}, Open  ]]
+},
+WindowSize->{808, 655},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 438, 9, 52, "Input",ExpressionUUID->"f239ed28-71e0-408a-ba86-8f448db41f10"],
+Cell[1021, 33, 391, 9, 24, "Message",ExpressionUUID->"5e3cd6a0-b686-416d-8cac-22481b589189"],
+Cell[1415, 44, 320, 6, 34, "Output",ExpressionUUID->"9a1bb1ab-13a1-4fc3-94bc-be7b257d66e9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1772, 55, 270, 5, 30, "Input",ExpressionUUID->"2b91f08f-878b-41b8-9803-f196889a075a"],
+Cell[2045, 62, 333, 8, 68, "Output",ExpressionUUID->"dd6b0fee-759b-441d-b00c-71fdd5ff0087"]
+}, Open  ]]
+}
+]
+*)
+

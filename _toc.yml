@@ -24,6 +24,7 @@ parts:
     - file: notebooks/economics/road_freight/ocean-freight-infra
     - file: notebooks/economics/road_freight/road_freight_history
     - file: notebooks/economics/road_freight/road-speed-limits-by-countries
+    - file: notebooks/visualization/us/state-rank-mckinsey/rank-data
   - caption: Data Acquisition
     numbered: True
     chapters:
@@ -48,6 +49,10 @@ parts:
     - file: notebooks/graph/graph-laplacian
     - file: notebooks/graph/graph-node-statistics
     - file: notebooks/graph/traditional-graph-generation
+  - caption: Visualizations
+    numbered: True
+    chapters:
+    - file: notebooks/visualization/matplotlib_multilanguages
   - caption: Machine Learning
     numbered: True
     chapters:
@@ -56,10 +61,20 @@ parts:
     - file: notebooks/random_forest/random_forest_benchmark
     - file: notebooks/logistic_regression/logistic_regression_basics
     - file: notebooks/vc_dimension/growth_function
+    - file: notebooks/basics/pytorch_variables-and-autograd
+    - file: notebooks/basics/pytorch_demo
+    - file: notebooks/basics/pytorch_basics
+    - file: notebooks/basics/neural-networks-with-torch
   - caption: Time Series
     numbered: True
     chapters:
     - file: notebooks/logistics/air_freight_time_series_data
+  - caption: Audio
+    numbered: True
+    chapters:
+    - file: notebooks/audo/audio-processing
+    - file: notebooks/audo/geodata
+    - file: notebooks/audo/orgasm-data-preprocessing
   - caption: Economics
     numbered: True
     chapters:
@@ -72,3 +87,4 @@ parts:
     numbered: True
     chapters:
     - file: notebooks/fun/bilibili-data-analysis
+    - file: notebooks/basics/tricks-in-pandas-1
