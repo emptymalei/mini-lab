@@ -5,3 +5,4 @@ pandas==1.5.3
 tqdm==4.64.1
 seaborn==0.12.2
 sympy==1.11.1
+missingno==0.5.1

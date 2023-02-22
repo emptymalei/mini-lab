@@ -18,6 +18,12 @@ parts:
     - file: notebooks/scientist_names/scientist_names
     - file: notebooks/space_exploration/space-exploration
     - file: notebooks/visualization/airplane/visualizing-airtraffic
+    - file: notebooks/economics/road_freight/airfreight-infra
+    - file: notebooks/economics/road_freight/european-road-freight
+    - file: notebooks/economics/road_freight/eurostats_modal_split
+    - file: notebooks/economics/road_freight/ocean-freight-infra
+    - file: notebooks/economics/road_freight/road_freight_history
+    - file: notebooks/economics/road_freight/road-speed-limits-by-countries
   - caption: Statistics
     numbered: True
     chapters:
@@ -48,6 +54,10 @@ parts:
     numbered: True
     chapters:
     - file: notebooks/logistics/air_freight_time_series_data
+  - caption: Economics
+    numbered: True
+    chapters:
+    - file: notebooks/economics/supply-demand.ipynb
   - caption: Interplanetary Immigration Center
     numbered: True
     chapters:
