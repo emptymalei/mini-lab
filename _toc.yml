@@ -17,6 +17,7 @@ parts:
     - file: notebooks/data_management/datapackage_demo
     - file: notebooks/scientist_names/scientist_names
     - file: notebooks/space_exploration/space-exploration
+    - file: notebooks/visualization/airplane/visualizing-airtraffic
   - caption: Statistics
     numbered: True
     chapters:
